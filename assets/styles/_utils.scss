@@ -1,0 +1,10 @@
+.out-of-box {
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%)
+}
+
+.container {
+
+  @apply self-center max-w-screen-xl
+}

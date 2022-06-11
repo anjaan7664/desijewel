@@ -1,0 +1,39 @@
+.jewellery_design_tagline {
+  @apply text-4xl relative;
+
+  &:before,
+  &:after {
+    content: url("~/assets/img/after.webp");
+    top: 5px;
+  }
+
+  &:before {
+    left: 20%;
+  }
+
+  @media screen and (max-width: 768px) {
+    @apply text-2xl;
+
+    &:before {
+      @apply -left-12
+    }
+
+    ;
+
+    &:after {
+      @apply -right-12
+    }
+
+    ;
+
+    &:before,
+    &:after {
+      @apply absolute;
+      content: url("~/assets/img/diamond-design.webp");
+    }
+  }
+}
+
+.hmain {
+  @apply italic font-Playfair mx-auto border-b-4 pb-1 border-red w-auto inline-block text-3xl md:text-4xl ;
+}

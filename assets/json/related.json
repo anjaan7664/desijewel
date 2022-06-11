@@ -1,0 +1,39 @@
+{
+    "aad": [
+        {
+            "image": "/designs/images/kundan_aad/1533990086405930.jpg",
+            "name": "category.aad",
+            "url": "aad"
+        },
+        {
+            "image": "/designs/images/thusi/thusi30.jpg",
+            "name": "category.thusi",
+            "url": "thusi"
+        },
+        {
+            "image": "/designs/images/rakhdi/1515151406124270.jpg",
+            "name": "category.rakhdi",
+            "url": "rakhdi"
+        },
+        {
+            "image": "/designs/images/emboss_rakhdi_set/1567080068351242.jpg",
+            "name": "category.rakhdi_set",
+            "url": "rakhdi_set"
+        },
+        {
+            "image": "/designs/images/bala/1575537614951354.jpg",
+            "name": "category.bala",
+            "url": "bala"
+        },
+        {
+            "image": "/designs/images/kundan_jodha_haar/1533993733345739.jpg",
+            "name": "category.rakhdi_set",
+            "url": "rakhdi_set"
+        },
+        {
+            "image": "/designs/images/emboss_necklace/emboss_necklace100.jpg",
+            "name": "category.mangalsutra",
+            "url": "mangalsutra"
+        }
+    ]
+}

@@ -1,0 +1,66 @@
+{
+    "catData": [
+        {
+            "title": "Gold Jewellery Design",
+            "url": "/gold",
+            "catDataMetal": [
+                {
+                    "image": "mangalsutra.webp",
+                    "name": "Mangalsutra"
+                },
+                {
+                    "image": "bala.webp",
+                    "name": "Earrings"
+                },
+                {
+                    "image": "baajubandh.webp",
+                    "name": "Baajubandh"
+                }
+            ]
+        },
+        {
+            "title": "Silver Jewellery Design",
+            "url": "/silver",
+            "catDataMetal": [
+                {
+                    "image": "silver-payal.webp",
+                    "name": "Payal"
+                },
+                {
+                    "image": "silver-bracelet.webp",
+                    "name": "Bracelet"
+                },
+                {
+                    "image": "silver-utensil.webp",
+                    "name": "Utensil"
+                }
+            ]
+        }
+    ],
+    "showOff": [
+        {
+            "title": "BIS 22k Hallmarked Gold",
+            "alt":"BIS hallmark logo",
+            "image": "bis.webp",
+            "description": "All our Gold Jewellery is made with 91.6% purity of Gold. Bis hallmark."
+        },
+        {
+            "title": "Custom Stone in every Design",
+            "alt":"jewellery-diamond",
+            "image": "diamond.webp",
+            "description": "You can set your own type of color of stone in jewellery."
+        },
+        {
+            "title": "Gold Design Lookalike in Silver",
+            "alt":"silver-bar",
+            "image": "silver.webp",
+            "description": "We offer every Gold design made in silver with 24k Gold Polish. They look very Similar to gold "
+        },
+        {
+            "title": "Always On Time Delievery of Product",
+            "alt":"delivery-truck icon",
+            "image": "delivery.webp",
+            "description": "We commit to our word and deliever the product at time."
+        }
+    ]
+}

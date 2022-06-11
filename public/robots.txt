@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+Sitemap: https://desijewel.in/sitemap.xml
