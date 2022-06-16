@@ -2,9 +2,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import Link from "next/link";
-import CategoryTypes from "../../types/categoryTypes";
+import { useAppSelector } from "../../store/hooks";
 const Category: React.FC<{
-  myCategory: CategoryTypes[];
   catMetal: string;
 }> = (props) => {
   const { t } = useTranslation();
@@ -30,8 +29,9 @@ const Category: React.FC<{
       return body_part.silver;
     }
   };
+  const myCategory = useAppSelector((state) => state.category.category);
   const showByBodyPart = (part: string) => {
-    return props.myCategory.filter((i) => i.part === part);
+    return myCategory.categories.filter((i) => i.part === part);
   };
   return (
     <React.Fragment>
@@ -72,7 +72,7 @@ const Category: React.FC<{
                       {showByBodyPart(item.part).map((design) => {
                         return (
                           <li
-                            key={design.url}
+                            key={design.path}
                             className="w-full px-3 py-2 rounded-sm hover:bg-gray-100 text-black"
                           >
                             <Link

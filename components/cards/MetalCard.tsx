@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import React from "react";
 import CatCard from "./CatCard";
 import CategoryTypes from "../../types/categoryTypes";
