@@ -1,13 +1,11 @@
-import {  Mail, Phone } from "@mui/icons-material";
+import { ArrowForward, ArrowRight, Mail, Phone } from "@mui/icons-material";
 import type { NextPage } from "next";
+import Swal from "sweetalert2";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import JodhaHaar from "../public/images/icons/jodha-haar.webp";
-import * as data from "../assets/json/main-page.json";
-import appScreenShot from '../public/images/app_ss.webp'
-import playStore from '../public/images/play_store.webp'
+import { default as data } from "../assets/json/main-page.json";
 
 const Home: NextPage = () => {
   return (
@@ -18,7 +16,7 @@ const Home: NextPage = () => {
         <meta name="keywords" content="Designing Jewel" />
         <meta name="author" content="Designing Jewel" />
       </Head>
-      <div>
+      <div className="">
         <Welcome />
         <ShowCase />
         <ShowOff showOffData={data.showOff} />
@@ -50,14 +48,14 @@ export const ShowCase = () => {
   return (
     <section className="md:max-h-[90vh] flex flex-row flex-wrap w-full md:mt-4 text-center lg:flex-row-reverse lg:text-left ">
       <div className="w-full lg:w-1/2">
-        <div className="w-full">
+        <div className="relative h-full min-h-[26rem] ">
           <Image
-            src={JodhaHaar}
+            src="/images/icons/jodha-haar.webp"
             alt="Designing Jewel"
             title="Designing Jewel"
-            layout="responsive"
-            className="h-auto max-w-full px-3 md:p-4 md:px-16 mx-auto rounded-md shadowed min-h-[16rem]"
-            priority={true}
+            layout="fill"
+            className=" h-auto max-w-full px-3 md:p-4 md:px-16 mx-auto rounded-md shadowed overflow-hidden object-contain"
+            
           />
         </div>
       </div>
@@ -78,7 +76,7 @@ export const ShowCase = () => {
             className="text-center text-white text-2xl font-semibold animate-pulse cursor-pointer bg-pink-600 px-8 py-4 rounded-2xl
             hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out"
           >
-            <a>See Designs</a>
+            See Designs
           </Link>
         </div>
       </div>
@@ -102,8 +100,13 @@ export const ShowOff: React.FC<{
           {props.showOffData.map((item) => {
             return (
               <div className="flex flex-row p-4 md:w-1/2" key={item.title}>
-                <div className="flex-grow-0 w-3/12 md:w-1/5">
-                  {/* <img :src="require('/assets/img/' + index.image)" :alt="index.alt" className="" /> */}
+                <div className="flex-grow-0 w-3/12 md:w-1/5 image-container relative h-full">
+                  <Image
+                    src={`/images/${item.image}`}
+                    alt={item.alt}
+                    layout="fill"
+                    className="object-contain customShadow"
+                  />
                 </div>
                 <div className="flex flex-col w-9/12 md:w-4/5 px-4 text-left">
                   <h2 className="text-xl md:text-2xl font-Ledger leading-6">
@@ -135,6 +138,49 @@ export const PopularDesigns: React.FC<{
   return (
     <div className="w-full text-center md:my-16">
       <h1 className="hmain my-4 px-1">Check Our Designs</h1>
+      {props.catData.map((cData) => {
+        return (
+          <div
+            key={cData.title}
+            className="relative mx-auto my-3 flex flex-col items-center md:my-8 md:flex-row md:flex-wrap"
+          >
+            <h1 className="jewellery_design_tagline font-Samarkan relative md:w-full">
+              {cData.title}
+            </h1>
+            <div className="flex w-11/12 flex-col md:flex-row">
+              {cData.catDataMetal.map((item) => {
+                return (
+                  <div key={item.name} className="flex flex-1">
+                    <Link
+                      href={cData.url}
+                      className="relative w-full h-full p-4"
+                    >
+                      <div className="w-full shadow-neumorph relative m-2 flex transform flex-col rounded-2xl bg-gray-100 transition-all duration-300 md:m-4 md:hover:-translate-y-3">
+                        <div className="pb-1/1 relative image-container w-full overflow-hidden">
+                          <Image
+                            loading="lazy"
+                            src={`/images/icons/${item.image}`}
+                            // src={img}
+                            alt={item.name}
+                            layout="fill"
+                            className="rounded customShadow object-contain"
+                          />
+                        </div>
+                        <div className="mt-auto py-2 text-2xl font-semibold text-black md:text-xl lg:text-2xl">
+                          <h2>{item.name}</h2>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+            <Link href={cData.url} className="w-1/12 text-5xl text-gray-600">
+              <ArrowForward fontSize="large" />
+            </Link>
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -145,17 +191,17 @@ export const Extras: React.FC = () => {
       <h1 className="px-1 my-4 hmain ">Download Our App</h1>
       <div className="flex flex-col w-full md:flex-row">
         <div className="text-center md:w-1/2">
-          <div className="px-3 mt-8 text-center">
+          <div className="px-3 mt-8 text-center relative">
             <Image
-              src={appScreenShot}
+              src="/images/app_ss.jpg"
               alt="Desi Jewellery App"
               className="mx-auto rounded shadow-lg2 md:w-3/4 min-h-[16rem]"
-              layout="responsive"
+              layout="fill"
             />
           </div>
         </div>
         <div className="text-center md:w-1/2 md:text-left">
-          <div className="mx-3 md:mx-8 mt-6">
+          <div className="mx-3 md:mx-8 mt-6 relative">
             <p className="text-lg text-left md:text-xl ">
               We have many user who are not greatly familiar with browser and
               couldn&apos;t access our website. For their convenience we have
@@ -170,10 +216,10 @@ export const Extras: React.FC = () => {
               rel="external noopener noreferrer"
             >
               <Image
-                src={playStore}
+                src="/images/play_store.png"
                 className="w-2/3 md:w-1/2 mt-4"
                 alt="Donwnload Desi Jewellery on Play Store"
-                layout="responsive"
+                layout="fill"
               />
             </a>
           </div>
@@ -187,7 +233,12 @@ export const OfferUpdate: React.FC = () => {
   //  Typescript button click event
 
   const Subscribe = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
+    Swal.fire({
+      showConfirmButton: false,
+      timer: 1500,
+      icon: "success",
+      title: "You're subscribed to our newsletter.",
+    });
   };
   return (
     <div className="bg-primary out-of-box">

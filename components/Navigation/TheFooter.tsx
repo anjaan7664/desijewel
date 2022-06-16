@@ -11,15 +11,15 @@ import {
 } from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
-import PlayStore from "../../public/images/play_store.webp";
+import PlayStore from "../../public/images/play_store.png";
 const TheFooter = () => {
   const { t } = useTranslation();
 
   return (
     <React.Fragment>
-      <div className="w-full px-6 pt-2 bg-footer-gray">
+      <div className="w-full px-6 pt-2 bg-footer-gray out-of-box">
         <div className="container flex flex-col m-auto text-white">
-          <section className="flex flex-row md:flex-row">
+          <section className="flex flex-col md:flex-row">
             {/* Contact Us */}
             <ContactUs />
             {/* Information */}

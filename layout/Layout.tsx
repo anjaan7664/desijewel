@@ -4,9 +4,9 @@ import TheHeader from "../components/Navigation/TheHeader";
 
 const Layout=({children}:any) => {
   return (
-    <div className="max-size self-center max-w-screen-xl m-auto mx-2 lg:mx-auto">
+    <div className="">
       <TheHeader />
-      <main>{children}</main>
+      <main className="self-center mx-auto lg:mx-auto container max-w-[1280px]">{children}</main>
       <TheFooter />
     </div>
   );

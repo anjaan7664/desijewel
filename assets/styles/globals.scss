@@ -1,0 +1,32 @@
+@use 'hover';
+@use 'cards';
+@use 'fonts';
+@use 'colors';
+@use 'utils';
+@use 'buttons';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+input,
+textarea,
+button,
+select,
+div,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+
+@font-face {
+  font-family: 'Samarkan';
+  src: url('../fonts/SAMAN___.TTF') format('ttf');
+  font-weight: 400;
+  font-style: normal;
+  }
+  .shadowed {
+    filter: drop-shadow(5px 25px 15px rgba(0, 0, 0, 0.3));
+  }
+  

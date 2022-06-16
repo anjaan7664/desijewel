@@ -1,8 +1,17 @@
 import React from 'react'
-
-function index() {
+import MetalCard from '../../components/cards/MetalCard';
+import Category from '../../components/helpers/Category';
+import { default as CategoryList } from "../../assets/json/categoryList.json";
+const index = ()=> {
+  const catMetal = 'gold';
+  const myCategory = CategoryList.categories.filter(cat => {
+    return cat.metal === catMetal;
+  });
   return (
-    <div>index</div>
+    <React.Fragment>
+      <Category myCategory={myCategory} catMetal={catMetal} />
+      <MetalCard myCategory={myCategory} catMetal={catMetal}/>
+    </React.Fragment>
   )
 }
 

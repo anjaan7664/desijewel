@@ -1,4 +1,5 @@
 {
+  "baseUrl": "./",
   "compilerOptions": {
     "target": "es5",
     "lib": [
