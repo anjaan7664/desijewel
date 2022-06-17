@@ -13,7 +13,7 @@ function PrivacyPolicy() {
       <p>
         This Privacy Policy governs the manner in which Desijewel collects,
         uses, maintains and discloses information collected from users (each, a
-        &quot;User&quot;) of the https://www.desijewel.in website ("Site").
+        &quot;User&quot;) of the https://www.desijewel.in website.
       </p>
       <h3> Log Files</h3>
       <p>

@@ -1,31 +1,9 @@
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
-import Category from "../../../../components/helpers/Category";
-import FullDesign from "../../../../components/helpers/FullDesign";
-import { fetchSingleDesignsData } from "../../../../store/design-actions";
-import { useAppSelector, useAppDispatch } from "../../../../store/hooks";
+import React from 'react'
 
-const Index: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const MainImg = useAppSelector((state) => state.design.design);
-  const router = useRouter();
-  const imageQuery = router.query.design;
-
-  useEffect(() => {
-    dispatch(fetchSingleDesignsData(imageQuery));
-  }, [dispatch, imageQuery]);
-
+const index = () => {
   return (
-    <React.Fragment>
-      <Category catMetal="silver" />
-    <div>
-      
-      {MainImg && (
-        <FullDesign metal="silver" MainImg={MainImg} ImageQuery={imageQuery as string} />
-        )}
-    </div>
-        </React.Fragment>
-  );
-};
+    <div>index</div>
+  )
+}
 
-export default Index;
+export default index

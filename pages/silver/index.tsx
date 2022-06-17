@@ -9,7 +9,7 @@ const index = ()=> {
   });
   return (
     <React.Fragment>
-      <Category myCategory={myCategory} catMetal={catMetal} />
+      <Category catMetal={catMetal} />
       <MetalCard myCategory={myCategory} catMetal={catMetal}/>
     </React.Fragment>
   )

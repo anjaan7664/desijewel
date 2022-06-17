@@ -37,7 +37,7 @@ function TermsOfService() {
               materials; or
             </li>
             <li>
-              transfer the materials to another person or "mirror" the materials
+              transfer the materials to another person or &rdquo;mirror&rdquo; the materials
               on any other server.
             </li>
           </ol>
