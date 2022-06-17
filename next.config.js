@@ -7,6 +7,10 @@ const nextConfig = {
   },
   trailingSlash: false,
   reactStrictMode: true,
+  publicRuntimeConfig: {
+    // Will be available on both server and client
+    backendUrl: process.env.API_URL,
+  },
 }
 
 module.exports = nextConfig

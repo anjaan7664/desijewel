@@ -7,7 +7,7 @@ export const fetchDesignsData = (designConfig: {
   perPage: number;
 }): AppThunk => {
   return async (dispatch) => {
-    const response = await axios.get("http://localhost:8000/api/designs", {
+    const response = await axios.get("/designs", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -25,7 +25,7 @@ export const fetchSingleDesignsData = (
 ): AppThunk => {
   return async (dispatch) => {
     const response = await axios.get(
-      "http://localhost:8000/api/DisplayDesign",
+      "/DisplayDesign",
       {
         headers: {
           "Content-Type": "application/json",
