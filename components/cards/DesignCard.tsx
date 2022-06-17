@@ -59,9 +59,9 @@ const DesignCard: React.FC<{
               query: { subCat: props.designData.sub_category }
             })
           "
-            className="text-blue-400 underline capitalize"
+           
           >
-            <a>
+            <a  className="text-blue-400 underline capitalize">
               <span>{props.designData.sub_category}</span>
             </a>
           </Link>

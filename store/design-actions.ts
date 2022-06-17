@@ -25,7 +25,7 @@ export const fetchSingleDesignsData = (
 ): AppThunk => {
   return async (dispatch) => {
     const response = await axios.get(
-      "DisplayDesign",
+      `${process.env.NEXT_PUBLIC_API_URL}/DisplayDesign`,
       {
         headers: {
           "Content-Type": "application/json",

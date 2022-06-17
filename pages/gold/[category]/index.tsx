@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { fetchDesignsData } from "../../../store/design-actions";
 import DesignCard from "../../../components/cards/DesignCard";
 import Category from "../../../components/helpers/Category";
-import { Pagination } from "@mui/material";
+import { Pagination, Stack } from "@mui/material";
 import Image from "next/image";
 
 let isInitial = true;
@@ -53,14 +53,17 @@ const Index: React.FC = () => {
       </div>
       <div className="w-full text-center">
         {showDesigns && (
+          <Stack spacing={2}>
           <Pagination
             page={pageNum}
-            count={showDesigns.total/12}
-            variant="outlined"
+            count={Math.round(showDesigns.total/12)}
             shape="rounded"
             onChange={onPageChange}
-            className="mr-auto"
+            className="mx-auto my-2"
+            color="primary" 
+            showFirstButton showLastButton
           />
+          </Stack>
         )}
       </div>
     </React.Fragment>
