@@ -8,7 +8,7 @@ import { Pagination } from "@mui/material";
 import Image from "next/image";
 
 let isInitial = true;
-const perPage = 12;
+const perPage = 11;
 
 const Index: React.FC = () => {
   const router = useRouter();
@@ -55,7 +55,7 @@ const Index: React.FC = () => {
         {showDesigns && (
           <Pagination
             page={pageNum}
-            count={Math.round(showDesigns.total / perPage)}
+            count={showDesigns.total/12}
             variant="outlined"
             shape="rounded"
             onChange={onPageChange}
