@@ -175,7 +175,7 @@ function PrivacyPolicy() {
         If you have any questions about this Privacy Policy, the practices of
         this site, or your dealings with this site, please
         <strong>
-          <Link href="/contact"> Contact Us</Link>
+          <Link href="/contact"><a> Contact Us</a></Link>
         </strong>{" "}
         .
       </p>

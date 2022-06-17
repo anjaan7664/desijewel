@@ -3,7 +3,7 @@
 
   &:before,
   &:after {
-    content: url("../../public/images/after.png");
+    content: url("../../public/images/assets/after.png");
     top: 5px;
   }
 
@@ -29,7 +29,7 @@
     &:before,
     &:after {
       @apply absolute;
-      content: url("../../public/images/diamond-design.png");
+      content: url("../../public/images/assets/diamond-design.png");
     }
   }
 }

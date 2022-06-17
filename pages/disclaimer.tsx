@@ -24,8 +24,9 @@ function Disclaimer() {
         use . If you object to a photo or image published on our site, please
         <b>
           <Link href="/contact" title="Contact us">
+            <a>
             Contact us
-          </Link>
+            </a></Link>
         </b>{" "}
         with the image&apos;s title or URL and your cause for concern, whether
         it being your own image you&apos;ve captured and do not wish to share or
@@ -41,7 +42,7 @@ function Disclaimer() {
         By using our website, you hereby consent to our disclaimer and agree to
         its
         <b>
-          <Link href="terms-of-service">Terms</Link>
+          <Link href="terms-of-service"><a>Terms</a></Link>
         </b>
         .
       </p>

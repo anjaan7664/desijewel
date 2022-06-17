@@ -50,12 +50,11 @@ export const ShowCase = () => {
       <div className="w-full lg:w-1/2">
         <div className="relative h-full min-h-[26rem] ">
           <Image
-            src="/images/icons/jodha-haar.webp"
+            src="/images/assets/icons/jodha-haar.webp"
             alt="Designing Jewel"
             title="Designing Jewel"
             layout="fill"
             className=" h-auto max-w-full px-3 md:p-4 md:px-16 mx-auto rounded-md shadowed overflow-hidden object-contain"
-            
           />
         </div>
       </div>
@@ -71,12 +70,15 @@ export const ShowCase = () => {
           Jewellery making.
         </p>
         <div className="my-3 mt-4">
-          <Link
-            href="/gold"
-            className="text-center text-white text-2xl font-semibold animate-pulse cursor-pointer bg-pink-600 px-8 py-4 rounded-2xl
+          <Link href="/gold">
+            <a>
+              <button
+                className="text-center text-white text-2xl font-semibold animate-pulse cursor-pointer bg-pink-600 px-8 py-4 rounded-2xl
             hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out"
-          >
-            See Designs
+              >
+                See Designs
+              </button>
+            </a>
           </Link>
         </div>
       </div>
@@ -102,10 +104,10 @@ export const ShowOff: React.FC<{
               <div className="flex flex-row p-4 md:w-1/2" key={item.title}>
                 <div className="flex-grow-0 w-3/12 md:w-1/5 image-container relative h-full">
                   <Image
-                    src={`/images/${item.image}`}
+                    src={`/images/assets/${item.image}`}
                     alt={item.alt}
                     layout="fill"
-                    className="object-contain customShadow"
+                    className="object-contain"
                   />
                 </div>
                 <div className="flex flex-col w-9/12 md:w-4/5 px-4 text-left">
@@ -151,32 +153,33 @@ export const PopularDesigns: React.FC<{
               {cData.catDataMetal.map((item) => {
                 return (
                   <div key={item.name} className="flex flex-1">
-                    <Link
-                      href={cData.url}
-                      className="relative w-full h-full p-4"
-                    >
-                      <div className="w-full shadow-neumorph relative m-2 flex transform flex-col rounded-2xl bg-gray-100 transition-all duration-300 md:m-4 md:hover:-translate-y-3">
-                        <div className="pb-1/1 relative image-container w-full overflow-hidden">
-                          <Image
-                            loading="lazy"
-                            src={`/images/icons/${item.image}`}
-                            // src={img}
-                            alt={item.name}
-                            layout="fill"
-                            className="rounded customShadow object-contain"
-                          />
+                    <Link href={cData.url}>
+                      <a className="relative w-full h-full p-4">
+                        <div className="w-full shadow-neumorph relative m-2 flex transform flex-col rounded-2xl bg-gray-100 transition-all duration-300 md:m-4 md:hover:-translate-y-3">
+                          <div className="pb-1/1 relative image-container w-full overflow-hidden">
+                            <Image
+                              loading="lazy"
+                              src={`/images/assets/icons/${item.image}`}
+                              // src={img}
+                              alt={item.name}
+                              layout="fill"
+                              className="rounded customShadow object-contain"
+                            />
+                          </div>
+                          <div className="mt-auto py-2 text-2xl font-semibold text-black md:text-xl lg:text-2xl">
+                            <h2>{item.name}</h2>
+                          </div>
                         </div>
-                        <div className="mt-auto py-2 text-2xl font-semibold text-black md:text-xl lg:text-2xl">
-                          <h2>{item.name}</h2>
-                        </div>
-                      </div>
+                      </a>
                     </Link>
                   </div>
                 );
               })}
             </div>
             <Link href={cData.url} className="w-1/12 text-5xl text-gray-600">
-              <ArrowForward fontSize="large" />
+              <a>
+                <ArrowForward fontSize="large" />
+              </a>
             </Link>
           </div>
         );
@@ -191,17 +194,17 @@ export const Extras: React.FC = () => {
       <h1 className="px-1 my-4 hmain ">Download Our App</h1>
       <div className="flex flex-col w-full md:flex-row">
         <div className="text-center md:w-1/2">
-          <div className="px-3 mt-8 text-center relative">
+          <div className="px-3 mt-8 text-center relative w-full h-full">
             <Image
-              src="/images/app_ss.jpg"
+              src="/images/assets/app_ss.jpg"
               alt="Desi Jewellery App"
-              className="mx-auto rounded shadow-lg2 md:w-3/4 min-h-[16rem]"
+              className="mx-auto rounded shadow-lg2 md:w-3/4 min-h-[16rem] object-contain"
               layout="fill"
             />
           </div>
         </div>
-        <div className="text-center md:w-1/2 md:text-left">
-          <div className="mx-3 md:mx-8 mt-6 relative">
+        <div className="text-center md:w-1/2 md:text-left h-full">
+          <div className="mx-3 md:mx-8 mt-6 relative w-full h-full">
             <p className="text-lg text-left md:text-xl ">
               We have many user who are not greatly familiar with browser and
               couldn&apos;t access our website. For their convenience we have
@@ -215,12 +218,14 @@ export const Extras: React.FC = () => {
               className=""
               rel="external noopener noreferrer"
             >
-              <Image
-                src="/images/play_store.png"
-                className="w-2/3 md:w-1/2 mt-4"
-                alt="Donwnload Desi Jewellery on Play Store"
-                layout="fill"
-              />
+              <div className="relative h-full w-2/3 md:w-1/2 mt-4">
+                <Image
+                  src="/images/assets/lay_store.png"
+                  className=" h-auto max-w-full px-3 md:p-4 md:px-16 mx-auto rounded-md shadowed overflow-hidden object-contain"
+                  alt="Download Desi Jewellery on Play Store"
+                  layout="fill"
+                />
+              </div>
             </a>
           </div>
         </div>
@@ -230,8 +235,6 @@ export const Extras: React.FC = () => {
 };
 
 export const OfferUpdate: React.FC = () => {
-  //  Typescript button click event
-
   const Subscribe = (e: React.MouseEvent<HTMLElement>) => {
     Swal.fire({
       showConfirmButton: false,

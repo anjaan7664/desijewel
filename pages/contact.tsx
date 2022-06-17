@@ -23,7 +23,7 @@ function Contact() {
       </section>
       <section className="flex flex-wrap lg:mx-6 pt-12">
         <div className="w-full md:w-1/2 text-left">
-          <div className="mx-2 lg:m-6 rounded lg:mx-12 p-4 lg:p-8 mb-10">
+          <div>
             <h1 className="font-Merriweather text-center text-3xl text-secondary">
               {t("reach_us")}
             </h1>

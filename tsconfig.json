@@ -31,4 +31,6 @@
   ],
   "resolveJsonModule": true,
   "esModuleInterop": true,
+  "jsx": "react-jsx",
+  "jsxImportSource": "@emotion/react"
 }

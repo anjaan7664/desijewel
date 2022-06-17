@@ -11,7 +11,7 @@ import {
 } from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
-import PlayStore from "../../public/images/play_store.png";
+import PlayStore from "../../public/images/assets/play_store.png";
 const TheFooter = () => {
   const { t } = useTranslation();
 
@@ -160,7 +160,7 @@ export function CustomerService() {
             <Link href="/disclaimer">{t("disclaimer")}</Link>
           </li>
           <li className="my-2">
-            <Link href="/tos">{t("tos")}</Link>
+            <Link href="/terms-of-service">{t("tos")}</Link>
           </li>
           <li className="my-2">
             <Link href="/privacy-policy">
@@ -176,10 +176,10 @@ export function CustomerService() {
               {t("live_rate")}
             </a>
           </li>
-          <li className="my-2">
+          {/* <li className="my-2">
             <Link href="/admin">{t("profile")}</Link>
             <Link href="/auth/login">{t("login")}</Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

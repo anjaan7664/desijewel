@@ -50,7 +50,7 @@ const Category: React.FC<{
                bg-white border-secondary rounded-sm outline-none focus:outline-none"
                     >
                       <Image
-                        src={`/images/svg/${item.icon}`}
+                        src={`/images/assets/svg/${item.icon}`}
                         alt={item.part}
                         layout="fill"
                         className="ml-auto object-contain w-full h-full"
