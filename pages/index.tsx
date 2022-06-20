@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { default as data } from "../assets/json/main-page.json";
-
+import { motion } from "framer-motion"
 const Home: NextPage = () => {
   return (
     <React.Fragment>
@@ -64,20 +64,21 @@ export const ShowCase = () => {
           The Showcase of Indian and Rajasthani Jewellery
         </h1>
         <p className="my-2 md:my-8 text-lg lg:pr-24 lg:pt-3 font-Montserrat lg:mb-12">
-          We are commited to serve you with our best service. Our all jewellery
-          is manufactured in 22k gold with BIS hallmark. We belong to oldest
-          community of jewellers, SONI. We have generations experience in
-          Jewellery making.
+          We are dedicated to providing you with the finest service possible.
+          All of our jewellery is made of 22k gold and has the BIS hallmark. We
+          are members of the oldest jewellers&apos;s community, SONI. We have been
+          producing jewellery for centuries.
         </p>
         <div className="my-3 mt-4">
           <Link href="/gold">
             <a>
-              <button
+              <motion.button
                 className="text-center text-white text-2xl font-semibold animate-pulse cursor-pointer bg-pink-600 px-8 py-4 rounded-2xl
-            hover:scale-x-110 hover:scale-y-105 transition duration-300 ease-out"
+           "
+           whileHover={{scale: 1.1}}
               >
                 See Designs
-              </button>
+              </motion.button>
             </a>
           </Link>
         </div>

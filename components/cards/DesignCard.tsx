@@ -1,8 +1,9 @@
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { SingleDesign } from "../../types/types";
+import { SingleDesign } from "../../types/designData";
 
 const imgStyle = {
   boxShadow:
@@ -21,7 +22,7 @@ const DesignCard: React.FC<{
         style={imgStyle}
         className="relative flex flex-col overflow-hidden transition duration-150 bg-white rounded rounded-t rounded-b-none group"
       >
-        <div className="relative md:pb-4/6">
+        <motion.div className="relative md:pb-4/6" whileHover={{ scale: 1.2 }}>
           <Link
             href={`/${props.catMetal}/${props.designData.category}/${props.designData.image}`}
             className="relative w-full h-full"
@@ -36,12 +37,11 @@ const DesignCard: React.FC<{
                 }`}
                 alt="designAlt"
                 layout="fill"
-                className="h-full w-full object-cover rounded min-h-[16rem]
-           transition duration-300 ease-in-out transform"
+                className="h-full w-full object-cover rounded min-h-[16rem]"
               />
             </a>
           </Link>
-        </div>
+        </motion.div>
       </div>
       <div className="relative py-2 mt-auto text-2xl font-semibold text-black md:text-xl lg:text-2xl">
         <ul className="inline-block mb-4 text-xl text-left">
@@ -59,9 +59,8 @@ const DesignCard: React.FC<{
               query: { subCat: props.designData.sub_category }
             })
           "
-           
           >
-            <a  className="text-blue-400 underline capitalize">
+            <a className="text-blue-400 underline capitalize">
               <span>{props.designData.sub_category}</span>
             </a>
           </Link>

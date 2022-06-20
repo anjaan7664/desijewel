@@ -1,4 +1,4 @@
-type CategoryTypes = {
+interface CategoryTypes {
   metal: string;
   path: string;
   alt: string;

@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RelatedCategory from "./RelatedCategory";
 
+
 const FullDesign: React.FC<{
   metal: string;
   MainImg: SingleDesign;

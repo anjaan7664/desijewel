@@ -6,9 +6,10 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@500&family=Roboto:300,400,500,700&family=Teko&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@500&family=Roboto:wght@300;400;500;700&family=Teko&display=swap"
             rel="stylesheet"
           />
+         
           <Script id="google-analytics" strategy="afterInteractive">
             {`
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -21,13 +22,12 @@ class MyDocument extends Document {
         `}
           </Script>
           <Script
-   id="Adsense-id"
-   data-ad-client={process.env.GOOGLE_ADSENSE_ID}
-   async="true"
-   strategy="beforeInteractive"
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-/>
-
+            id="Adsense-id"
+            data-ad-client={process.env.GOOGLE_ADSENSE_ID}
+            async="true"
+            strategy="beforeInteractive"
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          />
         </Head>
 
         <body>

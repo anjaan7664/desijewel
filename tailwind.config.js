@@ -58,6 +58,7 @@ module.exports = {
         'Montserrat': ['Montserrat', 'sans-serif'],
         'Poppins': ['Poppins', 'sans-serif'],
         'Lobster': ['Lobster', 'cursive'],
+        'Roboto': ['Roboto', 'sans-serif'],
         'Playfair': ['Playfair Display', 'serif'],
         'Ledger': ['Ledger', 'serif']
       },

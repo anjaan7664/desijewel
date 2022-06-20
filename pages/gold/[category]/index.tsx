@@ -1,33 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
-import { fetchDesignsData } from "../../../store/design-actions";
+import { fetchDesignsData } from "../../../store/design-slice";
 import DesignCard from "../../../components/cards/DesignCard";
 import Category from "../../../components/helpers/Category";
 import { Pagination, Stack } from "@mui/material";
 import Image from "next/image";
-
+import { GetServerSideProps } from "next";
+import axios from "axios";
+import { Designs } from "../../../types/designData";
+import { setDesigns } from "../../../store/design-slice";
 let isInitial = true;
 const perPage = 11;
 
-const Index: React.FC = () => {
+const CategoryPage: React.FC<{ designs: Designs }> = (props) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const [pageNum, setPageNum] = useState<number>(
     router.query.page ? parseInt(router.query.page as string) : 1
   );
-  const showDesigns = useAppSelector((state) => state.design.designs);
+  
+  // useEffect(() => {
+  //   const designConfig = {
+  //     Category: router.query.category,
+  //     page: router.query.page || 1,
+  //     perPage: perPage,
+  //   };
+  //   dispatch(fetchDesignsData(designConfig));
+  // }, [dispatch, router.query.category, router.query.page]);
 
   useEffect(() => {
-    const designConfig = {
-      Category: router.query.category,
-      page: router.query.page || 1,
-      perPage: perPage,
-    };
-    dispatch(fetchDesignsData(designConfig));
-  }, [dispatch, router.query.category, router.query.page]);
-
-  console.log(showDesigns);
+    dispatch(setDesigns(props.designs));
+  },[dispatch, props.designs]);
+  
+  const showDesigns = useAppSelector((state) => state.design.designs);
   const onPageChange = (event: React.ChangeEvent<unknown>, pageNum: number) => {
     router.push(`/gold/${router.query.category}?page=${pageNum}`);
     setPageNum(pageNum);
@@ -44,8 +50,8 @@ const Index: React.FC = () => {
       <SortBy />
       <div className="flex flex-wrap justify-between overflow-hidden rounded pt-4 text-center">
         <Shoppers />
-        {showDesigns.data &&
-          showDesigns.data.map((design) => {
+        {props.designs.data &&
+          props.designs.data.map((design) => {
             return (
               <DesignCard key={design.id} designData={design} catMetal="gold" />
             );
@@ -54,15 +60,16 @@ const Index: React.FC = () => {
       <div className="w-full text-center">
         {showDesigns && (
           <Stack spacing={2}>
-          <Pagination
-            page={pageNum}
-            count={Math.round(showDesigns.total/12)}
-            shape="rounded"
-            onChange={onPageChange}
-            className="mx-auto my-2"
-            color="primary" 
-            showFirstButton showLastButton
-          />
+            <Pagination
+              page={pageNum}
+              count={Math.round(showDesigns.total / 12)}
+              shape="rounded"
+              onChange={onPageChange}
+              className="mx-auto my-2"
+              color="primary"
+              showFirstButton
+              showLastButton
+            />
           </Stack>
         )}
       </div>
@@ -70,6 +77,38 @@ const Index: React.FC = () => {
   );
 };
 
+
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const designConfig = {
+        Category: query.category,
+        page: query.page || 1,
+        perPage: 11,
+      };
+
+  const { data } = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/designs`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      params: designConfig,
+    }
+  );
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      designs: data,
+    },
+  };
+};
+export default CategoryPage;
 export const SortBy = () => {
   const sorting = (sort: string) => {
     console.log(sort);
@@ -122,9 +161,6 @@ export const SortBy = () => {
     </div>
   );
 };
-
-export default Index;
-
 export const Shoppers = () => {
   return (
     <div className="relative h-full w-full p-2 md:w-1/3 md:p-6">
