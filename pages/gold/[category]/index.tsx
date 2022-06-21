@@ -64,7 +64,7 @@ const CategoryPage: NextPage = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
+  store =>
     async ({ query }) => {
       const designConfig = {
         Category: query.category,

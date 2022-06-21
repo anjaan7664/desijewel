@@ -40,7 +40,7 @@ export const fetchDesignsData =
     perPage: number;
   }): AppThunk =>
   async (dispatch) => {
-    const response = await axios.get("http://localhost:8000/api/designs", {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/designs`, {
       headers: {
         "Content-Type": "application/json",
       },
