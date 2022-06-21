@@ -29,7 +29,7 @@ const DesignCard: React.FC<{
           >
             <a>
               <Image
-                src={`/images/designs/images/${
+                src={`https://desijewel.in/designs/images/${
                   props.designData.path +
                   props.designData.image +
                   "." +

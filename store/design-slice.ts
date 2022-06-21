@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Designs, SingleDesign } from "../types/types";
+import { Designs, SingleDesign } from "../types/designData";
 import { AppThunk } from "./index";
+import { createWrapper, HYDRATE } from "next-redux-wrapper";
 const initialState = {
-  loading:true,
+  loading: true,
   designs: {} as Designs,
   design: {} as SingleDesign,
-  error:null
+  error: null,
 };
 const designSlice = createSlice({
   name: "design",
@@ -18,18 +19,28 @@ const designSlice = createSlice({
       state.design = action.payload;
     },
   },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      console.log("HYDRATE", state, action.payload);
+      return {
+        ...state,
+        ...action.payload.design,
+      };
+    },
+  },
 });
 
 export const { setDesigns, getSingleDesign } = designSlice.actions;
 
 import axios from "axios";
-export const fetchDesignsData = (designConfig: {
-  Category: string | string[] | undefined;
-  page: string | number | string[];
-  perPage: number;
-}): AppThunk => {
-  return async (dispatch) => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/designs`, {
+export const fetchDesignsData =
+  (designConfig: {
+    Category: string | string[] | undefined;
+    page: string | number | string[];
+    perPage: number;
+  }): AppThunk =>
+  async (dispatch) => {
+    const response = await axios.get("http://localhost:8000/api/designs", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -40,7 +51,6 @@ export const fetchDesignsData = (designConfig: {
 
     dispatch(setDesigns(designs));
   };
-};
 
 export const fetchSingleDesignsData = (
   imageQuery: string | string[] | undefined

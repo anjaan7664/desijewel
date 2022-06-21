@@ -11,6 +11,9 @@ const nextConfig = {
     // Will be available on both server and client
     backendUrl: process.env.API_URL,
   },
+  images: {
+    domains: ['desijewel.in'],
+  },
 }
 
 module.exports = nextConfig

@@ -1,38 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { useAppSelector, useAppDispatch } from "../../../store/hooks";
+import { useAppSelector } from "../../../store/hooks";
 import { fetchDesignsData } from "../../../store/design-slice";
 import DesignCard from "../../../components/cards/DesignCard";
 import Category from "../../../components/helpers/Category";
 import { Pagination, Stack } from "@mui/material";
 import Image from "next/image";
-import { GetServerSideProps } from "next";
-import axios from "axios";
-import { Designs } from "../../../types/designData";
-import { setDesigns } from "../../../store/design-slice";
-let isInitial = true;
+import { NextPage } from "next";
+import { wrapper } from "../../../store";
+
 const perPage = 11;
 
-const CategoryPage: React.FC<{ designs: Designs }> = (props) => {
+const CategoryPage: NextPage = () => {
   const router = useRouter();
-  const dispatch = useAppDispatch();
   const [pageNum, setPageNum] = useState<number>(
     router.query.page ? parseInt(router.query.page as string) : 1
   );
-  
-  // useEffect(() => {
-  //   const designConfig = {
-  //     Category: router.query.category,
-  //     page: router.query.page || 1,
-  //     perPage: perPage,
-  //   };
-  //   dispatch(fetchDesignsData(designConfig));
-  // }, [dispatch, router.query.category, router.query.page]);
+  const designData = useAppSelector((state) => state.design.designs);
 
-  useEffect(() => {
-    dispatch(setDesigns(props.designs));
-  },[dispatch, props.designs]);
-  
   const showDesigns = useAppSelector((state) => state.design.designs);
   const onPageChange = (event: React.ChangeEvent<unknown>, pageNum: number) => {
     router.push(`/gold/${router.query.category}?page=${pageNum}`);
@@ -50,8 +35,8 @@ const CategoryPage: React.FC<{ designs: Designs }> = (props) => {
       <SortBy />
       <div className="flex flex-wrap justify-between overflow-hidden rounded pt-4 text-center">
         <Shoppers />
-        {props.designs.data &&
-          props.designs.data.map((design) => {
+        {designData.data &&
+          designData.data.map((design) => {
             return (
               <DesignCard key={design.id} designData={design} catMetal="gold" />
             );
@@ -62,7 +47,8 @@ const CategoryPage: React.FC<{ designs: Designs }> = (props) => {
           <Stack spacing={2}>
             <Pagination
               page={pageNum}
-              count={Math.round(showDesigns.total / 12)}
+              // count={Math.round(showDesigns.total / 12)}
+              count={112}
               shape="rounded"
               onChange={onPageChange}
               className="mx-auto my-2"
@@ -77,38 +63,22 @@ const CategoryPage: React.FC<{ designs: Designs }> = (props) => {
   );
 };
 
-
-
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const designConfig = {
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) =>
+    async ({ query }) => {
+      const designConfig = {
         Category: query.category,
         page: query.page || 1,
         perPage: 11,
       };
-
-  const { data } = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL}/designs`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      params: designConfig,
+      await store.dispatch(fetchDesignsData(designConfig));
+      return {
+        props: {},
+      };
     }
-  );
-
-  if (!data) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      designs: data,
-    },
-  };
-};
+);
 export default CategoryPage;
+
 export const SortBy = () => {
   const sorting = (sort: string) => {
     console.log(sort);

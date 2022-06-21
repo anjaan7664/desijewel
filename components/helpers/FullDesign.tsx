@@ -1,9 +1,9 @@
-import {ChevronRight } from "@mui/icons-material";
+import { ChevronRight } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { SingleDesign } from "../../types/types";
+import { SingleDesign } from "../../types/designData";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -11,11 +11,9 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RelatedCategory from "./RelatedCategory";
 
-
 const FullDesign: React.FC<{
   metal: string;
   MainImg: SingleDesign;
-  ImageQuery: string;
 }> = (props) => {
   const { t } = useTranslation();
   const translate = (word: string) => {
@@ -33,15 +31,14 @@ const FullDesign: React.FC<{
       <div>
         <div className="container mx-auto flex flex-col py-1 text-lg">
           <div className="flex flex-row border-l-4 border-[#ae1dd2] bg-gray-100 p-1">
-            <Link href="/" >
+            <Link href="/">
               <a className="capitalize text-black">{props.metal}</a>
             </Link>
             <ChevronRight />
-            <Link
-              href={`/${props.metal}/${props.MainImg.category}`}
-             
-            >
-              <a  className="capitalize text-blue-600">{props.MainImg.category}</a>
+            <Link href={`/${props.metal}/${props.MainImg.category}`}>
+              <a className="capitalize text-blue-600">
+                {props.MainImg.category}
+              </a>
             </Link>
           </div>
           <div className="my-2 border-l-4 border-[#1D9DD2] text-lg">
@@ -56,10 +53,10 @@ const FullDesign: React.FC<{
         <div className="my-2 flex w-full flex-col md:flex-row md:p-0">
           {/* Hero Design  */}
           <div className="bg-violet rounded-t rounded-b-none md:w-3/5">
-              {/* Image  */}
+            {/* Image  */}
             <div className="my-2 flex relative h-full w-full min-w-[8] flex-col rounded-t rounded-b-none md:m-3 md:my-auto">
               <Image
-                src={`/images/designs/images/${
+                src={`https://desijewel.in/designs/images/${
                   props.MainImg.path +
                   props.MainImg.image +
                   "." +

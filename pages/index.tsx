@@ -97,7 +97,7 @@ export const ShowOff: React.FC<{
 }> = (props) => {
   return (
     <div className="w-full h-full my-2 md:my-8 text-center md:mt-16">
-      <h1 className="my-2 hmain">Why We Are Best</h1>
+      <h1 className="my-2">Why We Are Best</h1>
       <div className="">
         <div className="flex flex-wrap">
           {props.showOffData.map((item) => {
@@ -140,7 +140,7 @@ export const PopularDesigns: React.FC<{
 }> = (props) => {
   return (
     <div className="w-full text-center md:my-16">
-      <h1 className="hmain my-4 px-1">Check Our Designs</h1>
+      <h1 className="heading-main my-4 px-1">Check Our Designs</h1>
       {props.catData.map((cData) => {
         return (
           <div
@@ -192,7 +192,7 @@ export const PopularDesigns: React.FC<{
 export const Extras: React.FC = () => {
   return (
     <section className="w-full text-center my-4">
-      <h1 className="px-1 my-4 hmain ">Download Our App</h1>
+      <h1 className="px-1 my-4 heading-main ">Download Our App</h1>
       <div className="flex flex-col w-full md:flex-row">
         <div className="text-center md:w-1/2">
           <div className="px-3 mt-8 text-center relative w-full h-full">
