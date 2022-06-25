@@ -54,6 +54,7 @@ const Header = () => {
             <button
               className="flex items-center px-3 py-2 border-2 rounded text-white border-teal-light mr-1 sm:mr-3"
               onClick={toggle}
+              aria-label="menu"
             > <MenuIcon /></button>
           </div>
         </div>
@@ -66,22 +67,25 @@ const Header = () => {
             <ul className="nav-list md:flex md:flex-row flex flex-col w-full md:w-auto md:pt-0">
               <li>
                 <Link href="/">
-                  <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary">{t("home")}</a>
+                  <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary" aria-label="Home">{t("home")}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/gold">
-                  <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary">{t("gold")}</a>
+                  <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary" aria-label="Gold">{t("gold")}</a>
                 </Link>
               </li>
               <li>
                 <Link href="/silver">
-                  <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary">{t("silver")}</a>
+                  <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary" 
+                  aria-label="Silver">{t("silver")}</a>
+              
                 </Link>
               </li>
               <li>
                 <Link href="/contact">
-                  <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary">{t("contact")}</a>
+                  <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary"
+                    aria-label="Contact"   >{t("contact")}</a>
                 </Link>
               </li>
 
@@ -124,7 +128,7 @@ const Header = () => {
                 
                 >
                   <Link href="/about">
-                    <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary">{t("about")}</a>
+                    <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary" aria-label="About">{t("about")}</a>
                   </Link>
                 </li>
               )}

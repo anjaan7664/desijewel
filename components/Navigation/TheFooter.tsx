@@ -73,6 +73,7 @@ export function ContactUs() {
               href="https://www.facebook.com/Anj7664"
               className="text-white"
               target="_blank"
+              aria-label="Facebook"
               rel="noopener noreferrer"
             >
               <Facebook className="mr-2" fontSize="large" />
@@ -176,6 +177,7 @@ export function CustomerService() {
               href="http://hbjodhpur.com"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="hbjodhpur"
             >
               {t("live_rate")}
             </a>
@@ -200,7 +202,9 @@ export function LowerFooter() {
             href="http://satlaa.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 ml-1 mb-2 font-semibold transition-colors duration-300 text-red hover:text-white "
+            className="mt-2 ml-1 mb-2 font-semibold transition-colors duration-300 text-white hover:text-primary "
+            aria-label="Satlaa Tech"
+            
           >
             Satlaa Tech
           </a>
@@ -213,6 +217,7 @@ export function LowerFooter() {
               className="text-white"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Facebook"
             >
               <Facebook className="mr-2" fontSize="large" />
             </a>
@@ -221,6 +226,7 @@ export function LowerFooter() {
               className="ml-3 text-white"
               target="_blank"
               rel="noopener noreferrer"
+                      aria-label="Twitter"
             >
               <Twitter className="mr-2" fontSize="large" />
             </a>
@@ -229,6 +235,7 @@ export function LowerFooter() {
               className="ml-3 text-white"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram"
             >
               <Instagram className="mr-2" fontSize="large" />
             </a>

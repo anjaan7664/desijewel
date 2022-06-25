@@ -3,7 +3,7 @@ import Script from "next/script";
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@500&family=Roboto:wght@300;400;500;700&family=Teko:wght@400;700&display=swap"

@@ -7,6 +7,7 @@ import Link from "next/link";
 import React from "react";
 import { default as data } from "../assets/json/main-page.json";
 import { motion } from "framer-motion";
+
 const Home: NextPage = () => {
   return (
     <React.Fragment>

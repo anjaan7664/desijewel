@@ -73,5 +73,5 @@ module.exports = {
   corePlugins: {
     container: false,
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [require("@tailwindcss/typography")],
 };
