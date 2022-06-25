@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   i18n: {
-    locales: ['default', 'en', 'hi'],
-    defaultLocale: 'default',
+    locales: ["default", "en", "hi"],
+    defaultLocale: "default",
     localeDetection: false,
   },
   trailingSlash: false,
@@ -12,8 +12,9 @@ const nextConfig = {
     backendUrl: process.env.API_URL,
   },
   images: {
-    domains: ['desijewel.in'],
+    domains: ["desijewel.in"],
   },
-}
+  
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

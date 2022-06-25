@@ -3,6 +3,10 @@ import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import Link from "next/link";
 import { useAppSelector } from "../../store/hooks";
+import { Accordion, AccordionDetails, Typography } from "@mui/material";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AccordionItem from "../accordion/Accordion-Item";
 const Category: React.FC<{
   catMetal: string;
 }> = (props) => {
@@ -49,12 +53,16 @@ const Category: React.FC<{
                       className="relative flex flex-row items-center w-full h-full px-3 py-2 border-2
                bg-white border-secondary rounded-sm outline-none focus:outline-none"
                     >
-                      <Image
-                        src={`/images/assets/svg/${item.icon}`}
-                        alt={item.part}
-                        layout="fill"
-                        className="ml-auto object-contain w-full h-full"
-                      />
+                      <div>
+                        <Image
+                          src={`/images/assets/svg/${item.icon}`}
+                          alt={item.part}
+                          width={24}
+                          height={24}
+                          layout="responsive"
+                        />
+                      </div>
+
                       <span className="flex-1 pr-1 text-lg font-semibold capitalize text-black">
                         {t(item.part)}
                       </span>
@@ -76,7 +84,6 @@ const Category: React.FC<{
                             className="w-full px-3 py-2 rounded-sm hover:bg-gray-100 text-black"
                           >
                             <Link
-                              // href="'/'+catMetal+'/' + design.url"
                               href={`/${props.catMetal}/${design.url}`}
                               className="inline-block w-full"
                             >
@@ -93,6 +100,73 @@ const Category: React.FC<{
           </div>
         </div>
       </div>
+      {/* For Mobile Version  */}
+      <Accordion className="w-full bg-white text-accent  md:hidden border my-1 border-black">
+        <AccordionSummary
+          className=""
+          // expandIcon={<ExpandMoreIcon />}
+        >
+          <Typography
+            className="flex items-center px-3 mx-auto bg-white rounded-sm text-accent
+              outline-none focus:outline-none min-w-32 text-xl md:text-lg"
+          >
+            Jewellery By Body Part
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails className=" border-secondary">
+          {body_part_array().map((index) => {
+            return (
+              <Accordion
+                className="border border-base-300 bg-base-100"
+                key={index.part}
+              >
+                <AccordionSummary
+                  className=" flex items-center w-full h-full border-2
+                 bg-white"
+                >
+                  <div className=" flex-1">
+                    <span className="relative">
+                      <Image
+                        src={`/images/assets/svg/${index.icon}`}
+                        alt={index.part}
+                        className=""
+                        width={30}
+                        height={30}
+                        layout="fixed"
+                      />
+                    </span>
+                  </div>
+                  <span className="flex-1 pr-1 text-lg font-semibold capitalize text-black">
+                    {t(index.part)}
+                  </span>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <ul
+                    className="w-full
+                             bg-white rounded-sm"
+                  >
+                    {showByBodyPart(index.part).map((design, index) => {
+                      return (
+                        <li
+                          key={index}
+                          className="w-full px-3 py-2 rounded-sm  text-black border-2"
+                        >
+                          <Link
+                            href={`/${props.catMetal}/${design.url}`}
+                            className="inline-block w-full"
+                          >
+                            <a>{t(design.name)}</a>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </AccordionDetails>
+              </Accordion>
+            );
+          })}
+        </AccordionDetails>
+      </Accordion>
     </React.Fragment>
   );
 };

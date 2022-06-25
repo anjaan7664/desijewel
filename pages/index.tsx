@@ -6,14 +6,20 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { default as data } from "../assets/json/main-page.json";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 const Home: NextPage = () => {
   return (
     <React.Fragment>
       <Head>
         <title>Designing Jewel</title>
-        <meta name="description" content="Designing Jewel" />
-        <meta name="keywords" content="Designing Jewel" />
+        <meta
+          name="description"
+          content="Designing Jewel features high-quality wide range of affordable Designs online. Designing Jewel offers High Quality, Certified Hallmarked Premium Jewellery for you and your family."
+        />
+        <meta
+          name="keywords"
+          content="emboss,ethnic,gold price,22ct,women,buy,jewellery,kundan,emboss,design,gold,jodhpur,pali,barmer,nagaur,bikaner "
+        />
         <meta name="author" content="Designing Jewel" />
       </Head>
       <div className="">
@@ -46,15 +52,16 @@ export const Welcome = () => {
 };
 export const ShowCase = () => {
   return (
-    <section className="md:max-h-[90vh] flex flex-row flex-wrap w-full md:mt-4 text-center lg:flex-row-reverse lg:text-left ">
-      <div className="w-full lg:w-1/2">
-        <div className="relative h-full min-h-[26rem] ">
+    <section className="md:max-h-[90vh] flex flex-row flex-wrap w-full md:mt-4 text-center lg:flex-row-reverse lg:text-left  ">
+      <div className="w-full lg:w-1/2  ">
+        <div className="relative h-full min-h-[26rem] image-wrapper">
           <Image
             src="/images/assets/icons/jodha-haar.webp"
             alt="Designing Jewel"
             title="Designing Jewel"
             layout="fill"
-            className=" h-auto max-w-full px-3 md:p-4 md:px-16 mx-auto rounded-md shadowed overflow-hidden object-contain"
+            priority
+            className=" h-auto max-w-full px-3 md:p-4 md:px-16 mx-auto rounded-md shadowed  object-contain"
           />
         </div>
       </div>
@@ -66,8 +73,8 @@ export const ShowCase = () => {
         <p className="my-2 md:my-8 text-lg lg:pr-24 lg:pt-3 font-Montserrat lg:mb-12">
           We are dedicated to providing you with the finest service possible.
           All of our jewellery is made of 22k gold and has the BIS hallmark. We
-          are members of the oldest jewellers&apos;s community, SONI. We have been
-          producing jewellery for centuries.
+          are members of the oldest jewellers&apos;s community, SONI. We have
+          been producing jewellery for centuries.
         </p>
         <div className="my-3 mt-4">
           <Link href="/gold">
@@ -75,7 +82,7 @@ export const ShowCase = () => {
               <motion.button
                 className="text-center text-white text-2xl font-semibold animate-pulse cursor-pointer bg-pink-600 px-8 py-4 rounded-2xl
            "
-           whileHover={{scale: 1.1}}
+                whileHover={{ scale: 1.1 }}
               >
                 See Designs
               </motion.button>
@@ -97,21 +104,24 @@ export const ShowOff: React.FC<{
 }> = (props) => {
   return (
     <div className="w-full h-full my-2 md:my-8 text-center md:mt-16">
-      <h1 className="my-2">Why We Are Best</h1>
+      <h1 className="my-2 heading-main">Why We Are Best</h1>
       <div className="">
-        <div className="flex flex-wrap">
+        <div className="grid auto-rows-fr md:grid-cols-2">
           {props.showOffData.map((item) => {
             return (
-              <div className="flex flex-row p-4 md:w-1/2" key={item.title}>
-                <div className="flex-grow-0 w-3/12 md:w-1/5 image-container relative h-full">
+              <div className="flex flex-row p-2 w-full" key={item.title}>
+                {/* flex-grow-0 w-3/12 md:w-1/5 image-container relative h-full   */}
+                <div className=" w-3/12 md:w-1/5 relative  flex-grow">
                   <Image
                     src={`/images/assets/${item.image}`}
                     alt={item.alt}
-                    layout="fill"
+                    layout="responsive"
+                    width={100}
+                    height={80}
                     className="object-contain"
                   />
                 </div>
-                <div className="flex flex-col w-9/12 md:w-4/5 px-4 text-left">
+                <div className="flex flex-col w-9/12 md:w-4/5 px-4 text-left flex-grow-0">
                   <h2 className="text-xl md:text-2xl font-Ledger leading-6">
                     {item.title}
                   </h2>
@@ -157,7 +167,7 @@ export const PopularDesigns: React.FC<{
                     <Link href={cData.url}>
                       <a className="relative w-full h-full p-4">
                         <div className="w-full shadow-neumorph relative m-2 flex transform flex-col rounded-2xl bg-gray-100 transition-all duration-300 md:m-4 md:hover:-translate-y-3">
-                          <div className="pb-1/1 relative image-container w-full overflow-hidden">
+                          <div className="pb-1/1 relative image-container w-full image-wrapper">
                             <Image
                               loading="lazy"
                               src={`/images/assets/icons/${item.image}`}
@@ -194,19 +204,21 @@ export const Extras: React.FC = () => {
     <section className="w-full text-center my-4">
       <h1 className="px-1 my-4 heading-main ">Download Our App</h1>
       <div className="flex flex-col w-full md:flex-row">
-        <div className="text-center md:w-1/2">
-          <div className="px-3 mt-8 text-center relative w-full h-full">
+        <div className="text-center md:w-1/2 h-full">
+          <div className="px-3 text-center block h-full w-full md:w-3/4 min-h-[16rem] mx-auto">
             <Image
               src="/images/assets/app_ss.jpg"
               alt="Desi Jewellery App"
-              className="mx-auto rounded shadow-lg2 md:w-3/4 min-h-[16rem] object-contain"
-              layout="fill"
+              height={300}
+              width={300}
+              className="object-contain mx-auto rounded"
+              layout="responsive"
             />
           </div>
         </div>
         <div className="text-center md:w-1/2 md:text-left h-full">
           <div className="mx-3 md:mx-8 mt-6 relative w-full h-full">
-            <p className="text-lg text-left md:text-xl ">
+            <p className="text-lg text-left md:text-xl h-full ">
               We have many user who are not greatly familiar with browser and
               couldn&apos;t access our website. For their convenience we have
               made an android app for them. With this App user can easily access
@@ -219,12 +231,14 @@ export const Extras: React.FC = () => {
               className=""
               rel="external noopener noreferrer"
             >
-              <div className="relative h-full w-2/3 md:w-1/2 mt-4">
+              <div className="w-3/4 mt-6 md:w-3/4 relative">
                 <Image
-                  src="/images/assets/lay_store.png"
-                  className=" h-auto max-w-full px-3 md:p-4 md:px-16 mx-auto rounded-md shadowed overflow-hidden object-contain"
+                  src="/images/assets/play_store.png"
+                  className="object-contain"
+                  width={100}
+                  height={30}
                   alt="Download Desi Jewellery on Play Store"
-                  layout="fill"
+                  layout="responsive"
                 />
               </div>
             </a>

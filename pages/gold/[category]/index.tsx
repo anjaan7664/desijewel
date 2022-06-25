@@ -8,9 +8,13 @@ import { Pagination, Stack } from "@mui/material";
 import Image from "next/image";
 import { NextPage } from "next";
 import { wrapper } from "../../../store";
+import Head from "next/head";
 
 const perPage = 11;
-
+const imgStyle = {
+  boxShadow:
+    "8px 12px 16px 0 rgba(0, 0, 0, 0.25), -6px -6px 25px 0 rgba(222, 47, 69, 0.1)",
+};
 const CategoryPage: NextPage = () => {
   const router = useRouter();
   const [pageNum, setPageNum] = useState<number>(
@@ -25,6 +29,11 @@ const CategoryPage: NextPage = () => {
   };
   return (
     <React.Fragment>
+      <Head>
+        <title> </title>
+        <meta name="description" content=" " />
+        <meta name="keywords" content=" " />
+      </Head>
       <Category catMetal="gold" />
       <div className="w-full text-center">
         <h1 className="my-2 text-2xl md:my-6">
@@ -64,7 +73,7 @@ const CategoryPage: NextPage = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  store =>
+  (store) =>
     async ({ query }) => {
       const designConfig = {
         Category: query.category,
@@ -133,26 +142,22 @@ export const SortBy = () => {
 };
 export const Shoppers = () => {
   return (
-    <div className="relative h-full w-full p-2 md:w-1/3 md:p-6">
-      {1 == 1 ? (
-        <div className="">
-          <Image
-            src="/images/shoppers/shoppers_silver.webp"
-            alt="Designing Jewel Contact Card"
-            className="w-full min-w-full object-fill"
-            layout="fill"
-          />
-        </div>
-      ) : (
-        <div className="relative">
-          <Image
-            src="/images/shoppers/shoppers1.webp"
-            alt="Designing Jewel Contact Card"
-            className="w-full min-w-full object-fill"
-            layout="fill"
-          />
-        </div>
-      )}
+    <div className="relative designComponent h-full w-full p-2 md:w-1/3 md:p-6">
+      <div style={imgStyle} className="relative">
+        <Image
+          src={
+            1 == 1
+              ? "/images/shoppers/shoppers_silver.webp"
+              : "/images/shoppers/shoppers1.webp"
+          }
+          alt="Designing Jewel Contact Card"
+          width={100}
+          height={70}
+          className="h-full w-full rounded min-h-[16rem] object-fill"
+          layout="responsive"
+          priority
+        />
+      </div>
 
       <h4 className="my-2">
         Contact for more info -

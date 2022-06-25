@@ -2,3 +2,11 @@
   -webkit-filter: drop-shadow(4px 10px 8px rgb(0 0 0 / 0.5));
   filter: drop-shadow(4px 10px 8px rgb(0 0 0 / 0.5));
 }
+.image-wrapper span { overflow: visible !important;  }
+.category-wrapper > span {
+min-height: 120px !important;
+}
+.image-wrap > span {
+  width: 100% !important;
+  height: 100% !important;
+}

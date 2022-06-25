@@ -1,29 +1,39 @@
+import Head from "next/head";
 import React from "react";
 import { useTranslation } from "react-i18next";
-
+const shadow = {
+  boxShadow:
+    " 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+};
 function Contact() {
   const { t } = useTranslation();
   return (
+    <React.Fragment>
+      <Head>
+        <title>Contact Us</title>
+        <meta name="description" content="Contact Us" />
+      </Head>
     <div className="text-center">
       <h1 className="mt-4 mx-auto font-Merriweather text-4xl border-primary border-b-4 w-auto inline-block align-middle mb-12">
         {t("form.get_in_touch")}
       </h1>
       <section>
-        <div className="mx-2 lg:mx-24 rounded p-2">
-          {/* <iframe
-          className="w-full h-64 lg:h-80"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.1691213374206!2d73.04543442472033!3d26.223693824822323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418b4dce38c32d%3A0x1bdacd81874fd88a!2sDesi%20Jewellery!5e0!3m2!1sen!2sus!4v1641450566564!5m2!1sen!2sus"
-          frameborder="0"
-          title="map"
-          marginheight="0"
-          marginwidth="0"
-          scrolling="no"
-        ></iframe> */}
+        <div style={shadow} className="mx-2 lg:mx-24 rounded p-2 ">
+          <iframe
+            className="w-full h-64 lg:h-80"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.1691213374206!2d73.04543442472033!3d26.223693824822323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418b4dce38c32d%3A0x1bdacd81874fd88a!2sDesi%20Jewellery!5e0!3m2!1sen!2sus!4v1641450566564!5m2!1sen!2sus"
+            frameBorder="0"
+            title="map"
+            scrolling="no"
+          ></iframe>
         </div>
       </section>
       <section className="flex flex-wrap lg:mx-6 pt-12">
         <div className="w-full md:w-1/2 text-left">
-          <div>
+          <div
+            style={shadow}
+            className="mx-2 lg:m-6 rounded lg:mx-12 p-4 lg:p-8 mb-10"
+          >
             <h1 className="font-Merriweather text-center text-3xl text-secondary">
               {t("reach_us")}
             </h1>
@@ -54,7 +64,10 @@ function Contact() {
           </div>
         </div>
         <div className="w-full md:w-1/2">
-          <div className="mx-2 lg:m-6 rounded lg:mx-12 p-4 lg:p-8 lg:mt-6">
+          <div
+            style={shadow}
+            className="mx-2 lg:m-6 rounded lg:mx-12 p-4 lg:p-8 lg:mt-6"
+          >
             <div className="">
               <h1 className="font-Merriweather text-3xl text-secondary">
                 {t("contact_us")}
@@ -63,19 +76,19 @@ function Contact() {
                 <input
                   className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                   type="text"
-                  placeholder="$t('name')"
+                  placeholder={t("name")}
                 />
               </div>
               <div className="mt-2">
                 <input
                   className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                   type="text"
-                  placeholder="$t('email')"
+                  placeholder={t("email")}
                 />
               </div>
               <div className="mt-2">
                 <textarea
-                  placeholder="$t('form.message')"
+                  placeholder={t("form.message")}
                   className="w-full h-12 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 />
               </div>
@@ -92,6 +105,7 @@ function Contact() {
         </div>
       </section>
     </div>
+      </React.Fragment>
   );
 }
 

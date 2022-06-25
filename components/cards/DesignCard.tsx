@@ -1,3 +1,4 @@
+import { BlurCircular } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,24 +21,26 @@ const DesignCard: React.FC<{
     <div className="relative designComponent w-full p-2 md:w-1/3 md:p-6">
       <div
         style={imgStyle}
-        className="relative flex flex-col overflow-hidden transition duration-150 bg-white rounded rounded-t rounded-b-none group"
+        className="relative flex flex-col overflow-hidden bg-white rounded rounded-t rounded-b-none group"
       >
-        <motion.div className="relative md:pb-4/6" whileHover={{ scale: 1.2 }}>
+        <motion.div className="relative w-full" whileHover={{ scale: 1.2 }}>
           <Link
             href={`/${props.catMetal}/${props.designData.category}/${props.designData.image}`}
-            className="relative w-full h-full"
+            
           >
-            <a>
+            <a className="relative h-auto image-wrap">
               <Image
-                src={`https://desijewel.in/designs/images/${
+                src={`/images/designs/images/${
                   props.designData.path +
                   props.designData.image +
                   "." +
                   props.designData.img_type
                 }`}
                 alt="designAlt"
-                layout="fill"
-                className="h-full w-full object-cover rounded min-h-[16rem]"
+                layout="responsive"
+                width={100}
+                height={70}
+                className="object-cover "
               />
             </a>
           </Link>
@@ -53,12 +56,7 @@ const DesignCard: React.FC<{
 
         <p className="absolute top-0 text-xl">
           <Link
-            href="
-            localePath({
-              path: '/gold/' + props.designData.category,
-              query: { subCat: props.designData.sub_category }
-            })
-          "
+          href={`/${props.catMetal}/${props.designData.category}/${props.designData.image}?${props.designData.sub_category}`}
           >
             <a className="text-blue-400 underline capitalize">
               <span>{props.designData.sub_category}</span>

@@ -1,8 +1,14 @@
+import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 
 function PrivacyPolicy() {
   return (
+    <React.Fragment>
+   <Head>
+        <title>Privacy Policy</title>
+        <meta name="description" content= "Privacy Policy for Designing Jewel"/>
+      </Head>
     <div className="row prose md:prose-lg lg:prose-xl">
       <h1 className="text-3xl font-bold"> Privacy Policy</h1>
       <p>
@@ -187,6 +193,7 @@ function PrivacyPolicy() {
         document, those changes will be prominently posted here.
       </p>
     </div>
+    </React.Fragment>
   );
 }
 

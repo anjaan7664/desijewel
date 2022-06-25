@@ -106,16 +106,20 @@ export function DownloadApp() {
   return (
     <div className="flex-1 pt-6">
       <p className="text-3xl">{t("download_app")}</p>
-      <div className="w-3/4 mt-6 md:w-3/4">
+      <div className="w-3/4 mt-6 md:w-3/4 relative h-3/6">
         <a
           href="https://play.google.com/store/apps/details?id=satlaa.desijewellery"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer w-full relative"
         >
           <Image
             src={PlayStore}
+            layout="responsive"
+            width={100}
+            height={30}
             alt="Download Desi Jewellery on Play Store"
             title="Download Desi Jewellery on Play Store"
+            className="object-contain"
           />
         </a>
       </div>

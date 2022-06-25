@@ -1,4 +1,5 @@
 
+import Head from "next/head";
 import React from "react";
 import Category from "../../../../components/helpers/Category";
 import FullDesign from "../../../../components/helpers/FullDesign";
@@ -13,6 +14,11 @@ const Design: React.FC<{
   const MainImg = useAppSelector((state) => state.design.design);
   return (
     <React.Fragment>
+      <Head>
+        <title>{MainImg.alt} </title>
+        <meta name="description" content=" " />
+        <meta name="keywords" content=" " />
+      </Head>
       <Category catMetal="gold" />
       <div>
         {MainImg && (

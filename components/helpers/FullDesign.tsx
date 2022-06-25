@@ -1,16 +1,17 @@
-import { ChevronRight } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { SingleDesign } from "../../types/designData";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RelatedCategory from "./RelatedCategory";
-
+import {
+  Breadcrumbs,
+  Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
 const FullDesign: React.FC<{
   metal: string;
   MainImg: SingleDesign;
@@ -30,17 +31,17 @@ const FullDesign: React.FC<{
       {/* Showing image location */}
       <div>
         <div className="container mx-auto flex flex-col py-1 text-lg">
-          <div className="flex flex-row border-l-4 border-[#ae1dd2] bg-gray-100 p-1">
+          <Breadcrumbs className="flex flex-row border-l-4 border-[#ae1dd2] bg-gray-100 p-1">
             <Link href="/">
               <a className="capitalize text-black">{props.metal}</a>
             </Link>
-            <ChevronRight />
+
             <Link href={`/${props.metal}/${props.MainImg.category}`}>
               <a className="capitalize text-blue-600">
                 {props.MainImg.category}
               </a>
             </Link>
-          </div>
+          </Breadcrumbs>
           <div className="my-2 border-l-4 border-[#1D9DD2] text-lg">
             <h1 className="font-sm md:font-2xl ml-1 font-bold capitalize leading-5">
               {props.MainImg.image}
@@ -54,21 +55,24 @@ const FullDesign: React.FC<{
           {/* Hero Design  */}
           <div className="bg-violet rounded-t rounded-b-none md:w-3/5">
             {/* Image  */}
-            <div className="my-2 flex relative h-full w-full min-w-[8] flex-col rounded-t rounded-b-none md:m-3 md:my-auto">
-              <Image
-                src={`https://desijewel.in/designs/images/${
-                  props.MainImg.path +
-                  props.MainImg.image +
-                  "." +
-                  props.MainImg.img_type
-                }`}
-                layout="fill"
-                alt={props.MainImg.alt}
-                priority={true}
-                className="shadow-lg2 relative rounded object-contain md:max-h-[75vh] min-h-[15rem] md:max-w-[100%]"
-              />
-            </div>
+              <div className="my-2 flex relative h-full w-full min-w-[8] flex-col rounded-t rounded-b-none md:m-3 md:my-auto">
+                <Image
+                  src={`https://desijewel.in/designs/images/${
+                    props.MainImg.path +
+                    props.MainImg.image +
+                    "." +
+                    props.MainImg.img_type
+                  }`}
+                  layout="responsive"
+                  width={100}
+                  height={70}
+                  alt={props.MainImg.alt}
+                  priority={true}
+                  className="shadow-lg2 relative rounded object-contain md:max-h-[75vh] min-h-[15rem] md:max-w-[100%]"
+                />
+              </div>
           </div>
+
           {/* Product Detail  */}
           <div className="text-left md:w-2/5 md:px-6 lg:px-4">
             <h1 className="text-primary text-3xl font-semibold">

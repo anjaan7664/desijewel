@@ -20,12 +20,13 @@ const CatCard: React.FC<{
     relative flex flex-col transition-all duration-300 m-2 md:m-4
     rounded-2xl transform md:hover:-translate-y-3 cursor-pointer"
         >
-          <div className="relative pb-1/1 m-2 overflow-visible">
+          <div className="relative pb-1/1 m-2 image-wrapper">
             <Image
               src={`/images/assets/icons/${props.catData.image}`}
               alt={`${t(props.catData.name)}+' icon'`}
               layout="fill"
               className="shadowed p-2 mx-auto w-full h-full object-contain"
+            
             />
           </div>
           <div className="text-black  font-semibold text-2xl md:text-xl lg:text-2xl mt-auto py-2">

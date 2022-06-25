@@ -1,8 +1,15 @@
+import Head from "next/head";
 import React from "react";
 
 function TermsOfService() {
   return (
-    <div className="row prose md:prose-lg lg:prose-xl">
+    
+    <React.Fragment>
+      <Head>
+        <title>Terms Of Service</title>
+        <meta name="description" content= "Terms of service for using Designing Jewel"/>
+      </Head>
+      <div className="row prose md:prose-lg lg:prose-xl">
       <h2 className="text-3xl font-bold">Terms of Service</h2>
 
       <h3 className="text-2xl font-semibold">1. Terms</h3>
@@ -107,6 +114,7 @@ function TermsOfService() {
         those changes will be prominently posted here.
       </p>
     </div>
+    </React.Fragment>
   );
 }
 
