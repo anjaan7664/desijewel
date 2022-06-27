@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useSession } from "next-auth/react";
 import {
   PhoneAndroid,
   LocationOn,
@@ -45,12 +46,12 @@ export function ContactUs() {
   return (
     <div className="flex-1 pt-6">
       <p className="text-3xl"> {t("contact_us")}</p>
-      <div className="mt-6 pr-2">
+      <div className="pr-2 mt-6">
         <div className="flex my-2">
           <LocationOn className="mr-2" />
           <a
             href="https://goo.gl/maps/H6h1RVzzA1QzxzB89"
-            className="text-lg text-left lg:ml-0 underline"
+            className="text-lg text-left underline lg:ml-0"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -107,7 +108,7 @@ export function DownloadApp() {
   return (
     <div className="flex-1 pt-6">
       <p className="text-3xl">{t("download_app")}</p>
-      <div className="w-3/4 mt-6 md:w-3/4 relative h-3/6">
+      <div className="relative w-3/4 mt-6 md:w-3/4 h-3/6">
         <a
           href="https://play.google.com/store/apps/details?id=satlaa.desijewellery"
           target="_blank"
@@ -155,7 +156,7 @@ export function Information() {
 }
 export function CustomerService() {
   const { t } = useTranslation();
-
+  const { data: session } = useSession();
   return (
     <div className="flex-1 pt-6">
       <p className="text-3xl">{t("customer_service")}</p>
@@ -168,9 +169,7 @@ export function CustomerService() {
             <Link href="/terms-of-service">{t("tos")}</Link>
           </li>
           <li className="my-2">
-            <Link href="/privacy-policy">
-              {t("privacy_policy")}
-            </Link>
+            <Link href="/privacy-policy">{t("privacy_policy")}</Link>
           </li>
           <li className="my-2">
             <a
@@ -182,10 +181,13 @@ export function CustomerService() {
               {t("live_rate")}
             </a>
           </li>
-          {/* <li className="my-2">
-            <Link href="/admin">{t("profile")}</Link>
-            <Link href="/auth/login">{t("login")}</Link>
-          </li> */}
+          <li className="my-2">
+            {session ? (
+              <Link href="/admin">{t("profile")}</Link>
+            ) : (
+              <Link href="/auth/login">{t("login")}</Link>
+            )}
+          </li>
         </ul>
       </div>
     </div>
@@ -196,15 +198,14 @@ export function LowerFooter() {
   return (
     <React.Fragment>
       <div className="flex flex-col my-4 md:flex-row">
-        <div className="flex flex-row  lg:ml-3">
+        <div className="flex flex-row lg:ml-3">
           <p className="mt-2 mb-2">Copyright © 2021</p>
           <a
             href="http://satlaa.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 ml-1 mb-2 font-semibold transition-colors duration-300 text-white hover:text-primary "
+            className="mt-2 mb-2 ml-1 font-semibold text-white transition-colors duration-300 hover:text-primary "
             aria-label="Satlaa Tech"
-            
           >
             Satlaa Tech
           </a>
@@ -226,7 +227,7 @@ export function LowerFooter() {
               className="ml-3 text-white"
               target="_blank"
               rel="noopener noreferrer"
-                      aria-label="Twitter"
+              aria-label="Twitter"
             >
               <Twitter className="mr-2" fontSize="large" />
             </a>

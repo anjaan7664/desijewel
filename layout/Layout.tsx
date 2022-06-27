@@ -1,6 +1,6 @@
 import React from "react";
-import TheFooter from "../components/Navigation/TheFooter";
-import TheHeader from "../components/Navigation/TheHeader";
+import TheFooter from "@/components/Navigation/TheFooter";
+import TheHeader from "@/components/Navigation/TheHeader";
 
 const Layout=({children}:any) => {
   return (

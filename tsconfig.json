@@ -1,7 +1,34 @@
 {
   "baseUrl": "./",
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ],
+      "@/types/*": [
+        "types/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ],
+      "@/assets/*": [
+        "assets/*"
+      ],
+      "@/store/*": [
+        "store/*"
+      ],
+      "@/services/*": [
+        "services/*"
+      ],
+    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -24,8 +51,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/index.jsx"
-, "components/helpers/FancyBox.jsx"  ],
+    "pages/index.jsx",
+    "components/helpers/FancyBox.jsx"
+, "pages/auth/login.jsx", "pages/auth/register.jsx"  ],
   "exclude": [
     "node_modules"
   ],

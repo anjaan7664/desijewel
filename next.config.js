@@ -3,9 +3,9 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const nextConfig = {
   i18n: {
-    locales: ["default", "en", "hi"],
-    defaultLocale: "default",
-    localeDetection: false,
+    locales: [ "en-US", "hi"],
+    defaultLocale: "en-US",
+    localeDetection: true,
   },
   trailingSlash: false,
   reactStrictMode: true,

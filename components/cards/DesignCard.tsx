@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { SingleDesign } from "../../types/designData";
+import Edit from "../admin/Edit";
 
 const imgStyle = {
   boxShadow:
@@ -18,7 +19,7 @@ const DesignCard: React.FC<{
   const { t } = useTranslation();
 
   return (
-    <div className="relative designComponent w-full p-2 md:w-1/3 md:p-6">
+    <div className="relative w-full p-2 designComponent md:w-1/3 md:p-6">
       <div
         style={imgStyle}
         className="relative flex flex-col overflow-hidden bg-white rounded rounded-t rounded-b-none group"
@@ -26,7 +27,6 @@ const DesignCard: React.FC<{
         <motion.div className="relative w-full" whileHover={{ scale: 1.2 }}>
           <Link
             href={`/${props.catMetal}/${props.designData.category}/${props.designData.image}`}
-            
           >
             <a className="relative h-auto image-wrap">
               <Image
@@ -56,7 +56,7 @@ const DesignCard: React.FC<{
 
         <p className="absolute top-0 text-xl">
           <Link
-          href={`/${props.catMetal}/${props.designData.category}/${props.designData.image}?${props.designData.sub_category}`}
+            href={`/${props.catMetal}/${props.designData.category}/${props.designData.image}?${props.designData.sub_category}`}
           >
             <a className="text-blue-400 underline capitalize">
               <span>{props.designData.sub_category}</span>
@@ -64,6 +64,7 @@ const DesignCard: React.FC<{
           </Link>
         </p>
       </div>
+      {1 == 1 && <Edit />}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
-import MetalCard from "../../components/cards/MetalCard";
-import Category from "../../components/helpers/Category";
-import { default as CategoryList } from "../../assets/json/categoryList.json";
+import MetalCard from "@/components/cards/MetalCard";
+import Category from "@/components/helpers/Category";
+import { default as CategoryList } from "@/assets/json/categoryList.json";
 import Head from "next/head";
 const index = () => {
   const catMetal = "gold";
