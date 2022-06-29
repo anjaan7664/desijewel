@@ -59,7 +59,7 @@
     "pages/auth/login.jsx",
     "pages/auth/register.jsx",
     "types/design.model.js",
-    "pages/api/designs/index.js"
+    "pages/api/designs/index.ts"
   ],
   "exclude": [
     "node_modules"

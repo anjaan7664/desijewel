@@ -185,7 +185,7 @@ export function CustomerService() {
             {session ? (
               <Link href="/admin">{t("profile")}</Link>
             ) : (
-              <Link href="/auth/login">{t("login")}</Link>
+              <Link href="/auth">{t("login")}</Link>
             )}
           </li>
         </ul>
