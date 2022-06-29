@@ -1,23 +1,17 @@
 export interface Designs {
-  current_page: number;
-  data:SingleDesign [];
-  first_page_url: string;
-  from: number;
-  last_page: number;
-  last_page_url: string;
-  links: {
-    url: string;
-    label: string;
-    active: boolean;
-  }[];
-  next_page_url: string;
-  path: string;
-  per_page: number;
-  prev_page_url: string;
-  to: number;
-  total: number;
+  docs: SingleDesign[];
+  totalDocs: number;
+  limit: number;
+  totalPages: number;
+  page: number;
+  pagingCounter: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number;
+  nextPage: number;
 }
-export type SingleDesign ={
+export type SingleDesign = {
+  _id: string;
   id: number;
   category: string;
   dpname: string;
@@ -39,4 +33,4 @@ export type SingleDesign ={
   updated_at: string;
   title: string;
   design_code: string;
-}
+};

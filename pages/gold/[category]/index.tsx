@@ -9,7 +9,6 @@ import Image from "next/image";
 import { NextPage } from "next";
 import { wrapper } from "../../../store";
 import Head from "next/head";
-
 const perPage = 11;
 const imgStyle = {
   boxShadow:
@@ -37,15 +36,15 @@ const CategoryPage: NextPage = () => {
       <Category catMetal="gold" />
       <div className="w-full text-center">
         <h1 className="my-2 text-2xl md:my-6">
-          Showing Image of
+          Showing Image of &nbsp;
           <span className="font-bold capitalize">{router.query.category}</span>
         </h1>
       </div>
       <SortBy />
-      <div className="flex flex-wrap justify-between overflow-hidden rounded pt-4 text-center">
+      <div className="flex flex-wrap justify-between pt-4 overflow-hidden text-center rounded">
         <Shoppers />
-        {designData.data &&
-          designData.data.map((design) => {
+        {designData.docs &&
+          designData.docs.map((design) => {
             return (
               <DesignCard key={design.id} designData={design} catMetal="gold" />
             );
@@ -56,8 +55,7 @@ const CategoryPage: NextPage = () => {
           <Stack spacing={2}>
             <Pagination
               page={pageNum}
-              // count={Math.round(showDesigns.total / 12)}
-              count={112}
+              count={showDesigns.totalPages}
               shape="rounded"
               onChange={onPageChange}
               className="mx-auto my-2"
@@ -76,7 +74,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ query }) => {
       const designConfig = {
-        Category: query.category,
+        category: query.category,
         page: query.page || 1,
         perPage: 11,
       };
@@ -96,12 +94,12 @@ export const SortBy = () => {
   };
   return (
     <div className="flex flex-row justify-center">
-      <p className="mx-4 my-auto hidden h-full text-2xl font-bold md:block">
+      <p className="hidden h-full mx-4 my-auto text-2xl font-bold md:block">
         Sort By:
       </p>
       <ul className="flex flex-row self-center">
         <li
-          className="mx-1 cursor-pointer rounded-md bg-green-500 px-6 py-2 text-white"
+          className="px-6 py-2 mx-1 text-white bg-green-500 rounded-md cursor-pointer"
           // onClick={sorting('')}
         >
           All
@@ -142,7 +140,7 @@ export const SortBy = () => {
 };
 export const Shoppers = () => {
   return (
-    <div className="relative designComponent h-full w-full p-2 md:w-1/3 md:p-6">
+    <div className="relative w-full h-full p-2 designComponent md:w-1/3 md:p-6">
       <div style={imgStyle} className="relative">
         <Image
           src={

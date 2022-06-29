@@ -2,11 +2,9 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import Link from "next/link";
-import { useAppSelector } from "../../store/hooks";
 import { Accordion, AccordionDetails, Typography } from "@mui/material";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AccordionItem from "../accordion/Accordion-Item";
+import { default as myCategory } from "@/assets/json/categoryList.json";
 const Category: React.FC<{
   catMetal: string;
 }> = (props) => {
@@ -33,25 +31,24 @@ const Category: React.FC<{
       return body_part.silver;
     }
   };
-  const myCategory = useAppSelector((state) => state.category.category);
+
   const showByBodyPart = (part: string) => {
     return myCategory.categories.filter((i) => i.part === part);
   };
   return (
     <React.Fragment>
-      <div className="border border-accent hidden mx-auto md:block mt-4 md:mt-1">
+      <div className="hidden mx-auto mt-4 border border-accent md:block md:mt-1">
         <div className="flex flex-row p-2 px-6 border-black">
           <p className="w-1/6 h-full my-auto text-xl font-semibold text-black">
             Sort By Body Part
           </p>
-          <div className="w-5/6 flex">
+          <div className="flex w-5/6">
             {body_part_array().map((item) => {
               return (
-                <div key={item.part} className="z-40 mx-2 flex-1">
-                  <div className="relative inline-block w-full m-1 text-black group z-30">
+                <div key={item.part} className="z-40 flex-1 mx-2">
+                  <div className="relative z-30 inline-block w-full m-1 text-black group">
                     <button
-                      className="relative flex flex-row items-center w-full h-full px-3 py-2 border-2
-               bg-white border-secondary rounded-sm outline-none focus:outline-none"
+                      className="relative flex flex-row items-center w-full h-full px-3 py-2 bg-white border-2 rounded-sm outline-none border-secondary focus:outline-none"
                     >
                       <div>
                         <Image
@@ -63,7 +60,7 @@ const Category: React.FC<{
                         />
                       </div>
 
-                      <span className="flex-1 pr-1 text-lg font-semibold capitalize text-black">
+                      <span className="flex-1 pr-1 text-lg font-semibold text-black capitalize">
                         {t(item.part)}
                       </span>
                       <span>
@@ -81,7 +78,7 @@ const Category: React.FC<{
                         return (
                           <li
                             key={design.path}
-                            className="w-full px-3 py-2 rounded-sm hover:bg-gray-100 text-black"
+                            className="w-full px-3 py-2 text-black rounded-sm hover:bg-gray-100"
                           >
                             <Link
                               href={`/${props.catMetal}/${design.url}`}
@@ -101,14 +98,13 @@ const Category: React.FC<{
         </div>
       </div>
       {/* For Mobile Version  */}
-      <Accordion className="w-full bg-white text-accent  md:hidden border my-1 border-black">
+      <Accordion className="w-full my-1 bg-white border border-black text-accent md:hidden">
         <AccordionSummary
           className=""
           // expandIcon={<ExpandMoreIcon />}
         >
           <Typography
-            className="flex items-center px-3 mx-auto bg-white rounded-sm text-accent
-              outline-none focus:outline-none min-w-32 text-xl md:text-lg"
+            className="flex items-center px-3 mx-auto text-xl bg-white rounded-sm outline-none text-accent focus:outline-none min-w-32 md:text-lg"
           >
             Jewellery By Body Part
           </Typography>
@@ -121,10 +117,9 @@ const Category: React.FC<{
                 key={index.part}
               >
                 <AccordionSummary
-                  className=" flex items-center w-full h-full border-2
-                 bg-white"
+                  className="flex items-center w-full h-full bg-white border-2 "
                 >
-                  <div className=" flex-1">
+                  <div className="flex-1 ">
                     <span className="relative">
                       <Image
                         src={`/images/assets/svg/${index.icon}`}
@@ -136,20 +131,19 @@ const Category: React.FC<{
                       />
                     </span>
                   </div>
-                  <span className="flex-1 pr-1 text-lg font-semibold capitalize text-black">
+                  <span className="flex-1 pr-1 text-lg font-semibold text-black capitalize">
                     {t(index.part)}
                   </span>
                 </AccordionSummary>
                 <AccordionDetails>
                   <ul
-                    className="w-full
-                             bg-white rounded-sm"
+                    className="w-full bg-white rounded-sm"
                   >
                     {showByBodyPart(index.part).map((design, index) => {
                       return (
                         <li
                           key={index}
-                          className="w-full px-3 py-2 rounded-sm  text-black border-2"
+                          className="w-full px-3 py-2 text-black border-2 rounded-sm"
                         >
                           <Link
                             href={`/${props.catMetal}/${design.url}`}

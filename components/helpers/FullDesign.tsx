@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { SingleDesign } from "../../types/designData";
+import { SingleDesign } from "../../types/designData.types";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RelatedCategory from "./RelatedCategory";
 import {
@@ -30,34 +30,34 @@ const FullDesign: React.FC<{
     <React.Fragment>
       {/* Showing image location */}
       <div>
-        <div className="container mx-auto flex flex-col py-1 text-lg">
+        <div className="container flex flex-col py-1 mx-auto text-lg">
           <Breadcrumbs className="flex flex-row border-l-4 border-[#ae1dd2] bg-gray-100 p-1">
             <Link href="/">
-              <a className="capitalize text-black">{props.metal}</a>
+              <a className="text-black capitalize">{props.metal}</a>
             </Link>
 
             <Link href={`/${props.metal}/${props.MainImg.category}`}>
-              <a className="capitalize text-blue-600">
+              <a className="text-blue-600 capitalize">
                 {props.MainImg.category}
               </a>
             </Link>
           </Breadcrumbs>
           <div className="my-2 border-l-4 border-[#1D9DD2] text-lg">
-            <h1 className="font-sm md:font-2xl ml-1 font-bold capitalize leading-5">
+            <h1 className="ml-1 font-bold leading-5 capitalize font-sm md:font-2xl">
               {props.MainImg.image}
             </h1>
           </div>
         </div>
       </div>
       {/* Main Designs  */}
-      <section className="flex flex-wrap overflow-hidden rounded bg-white text-center md:px-2">
-        <div className="my-2 flex w-full flex-col md:flex-row md:p-0">
+      <section className="flex flex-wrap overflow-hidden text-center bg-white rounded md:px-2">
+        <div className="flex flex-col w-full my-2 md:flex-row md:p-0">
           {/* Hero Design  */}
-          <div className="bg-violet rounded-t rounded-b-none md:w-3/5">
+          <div className="rounded-t rounded-b-none bg-violet md:w-3/5">
             {/* Image  */}
               <div className="my-2 flex relative h-full w-full min-w-[8] flex-col rounded-t rounded-b-none md:m-3 md:my-auto">
                 <Image
-                  src={`https://desijewel.in/designs/images/${
+                  src={`/images/designs/images/${
                     props.MainImg.path +
                     props.MainImg.image +
                     "." +
@@ -75,7 +75,7 @@ const FullDesign: React.FC<{
 
           {/* Product Detail  */}
           <div className="text-left md:w-2/5 md:px-6 lg:px-4">
-            <h1 className="text-primary text-3xl font-semibold">
+            <h1 className="text-3xl font-semibold text-primary">
               Product Detail
             </h1>
             <ul className="mt-6 space-y-2 md:space-y-4">
@@ -103,7 +103,7 @@ const FullDesign: React.FC<{
                   &quot;22K(91.6)&quot; : &quot;92.5&quot;
                 </span>
               </li>
-              <li className="flex border-b border-gray-200 capitalize">
+              <li className="flex capitalize border-b border-gray-200">
                 <span className="font-bold">Category -</span>
                 <Link href={`/${props.metal}/${imageCategoryNew()}`}>
                   <a className="ml-auto text-xl font-normal text-blue-600 underline">
@@ -165,7 +165,7 @@ const FullDesign: React.FC<{
               </li>
             </ul>
             {/* To Buy and Call  */}
-            <div className="mt-8 border p-2 border-gray-300 rounded shadow-lg bg-gray-100">
+            <div className="p-2 mt-8 bg-gray-100 border border-gray-300 rounded shadow-lg">
               {/* <div v-if="designObject && designObject.silver_avail === 'yes'"> */}
               <div>
                 <p className="text-lg md:text-xl border-l-4 border-[#8a1dd2] pl-2">
@@ -180,7 +180,7 @@ const FullDesign: React.FC<{
                 </p>
               </div>
               <div className="flex flex-row border-l-4 border-[#32d21d] pl-2 mt-1 text-gray-700">
-                <p className=" ">For More Info & to Buy Call :-</p>
+                <p className="">For More Info & to Buy Call :-</p>
                 &nbsp;
                 <a href="tel:+919680398417" className="text-blue-600 underline">
                   +919680398417

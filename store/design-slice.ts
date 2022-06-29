@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Designs, SingleDesign } from "../types/designData";
+import { Designs, SingleDesign } from "../types/designData.types";
 import { AppThunk } from "./index";
-import { createWrapper, HYDRATE } from "next-redux-wrapper";
+import { HYDRATE } from "next-redux-wrapper";
+import axios from "axios";
 const initialState = {
   loading: true,
   designs: {} as Designs,
@@ -32,20 +33,20 @@ const designSlice = createSlice({
 
 export const { setDesigns, getSingleDesign } = designSlice.actions;
 
-import axios from "axios";
 export const fetchDesignsData =
   (designConfig: {
-    Category: string | string[] | undefined;
+    category: string | string[] | undefined;
     page: string | number | string[];
     perPage: number;
   }): AppThunk =>
   async (dispatch) => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/designs`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      params: designConfig,
-    });
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/designs`,
+      null,
+      {
+        params: designConfig,
+      }
+    );
 
     const designs = await response.data;
 
@@ -57,17 +58,10 @@ export const fetchSingleDesignsData = (
 ): AppThunk => {
   return async (dispatch) => {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/DisplayDesign`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        params: { image: imageQuery },
-      }
+      `${process.env.NEXT_PUBLIC_API_URL}/api/designs/${imageQuery}`
     );
 
     const design = await response.data;
-
     dispatch(getSingleDesign(design));
   };
 };

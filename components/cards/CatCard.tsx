@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-import CategoryTypes from "../../types/categoryTypes";
+import CategoryTypes from "../../types/category.types";
 import Link from "next/link";
 
 const CatCard: React.FC<{

@@ -1,10 +1,10 @@
-import { BlurCircular } from "@mui/icons-material";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { SingleDesign } from "../../types/designData";
+import { SingleDesign } from "../../types/designData.types";
 import Edit from "../admin/Edit";
 
 const imgStyle = {

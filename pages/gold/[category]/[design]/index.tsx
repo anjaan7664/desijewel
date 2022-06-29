@@ -6,7 +6,7 @@ import FullDesign from "../../../../components/helpers/FullDesign";
 import { wrapper } from "../../../../store";
 import { fetchSingleDesignsData } from "../../../../store/design-slice";
 import { useAppSelector } from "../../../../store/hooks";
-import { SingleDesign } from "../../../../types/designData";
+import { SingleDesign } from "../../../../types/designData.types";
 
 const Design: React.FC<{
   design: SingleDesign;

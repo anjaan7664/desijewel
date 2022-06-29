@@ -16,7 +16,11 @@ const nextConfig = {
   images: {
     domains: ["desijewel.in"],
   },
-  
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
 };
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that

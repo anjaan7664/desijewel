@@ -1,7 +1,7 @@
 
 import React from "react";
 import CatCard from "./CatCard";
-import CategoryTypes from "../../types/categoryTypes";
+import CategoryTypes from "../../types/category.types";
 
 const MetalCard: React.FC<{
   myCategory: CategoryTypes[];

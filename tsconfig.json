@@ -28,6 +28,9 @@
       "@/services/*": [
         "services/*"
       ],
+      "@/models/*": [
+        "models/*"
+      ]
     },
     "lib": [
       "dom",
@@ -52,8 +55,12 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/index.jsx",
-    "components/helpers/FancyBox.jsx"
-, "pages/auth/login.jsx", "pages/auth/register.jsx"  ],
+    "components/helpers/FancyBox.jsx",
+    "pages/auth/login.jsx",
+    "pages/auth/register.jsx",
+    "types/design.model.js",
+    "pages/api/designs/index.js"
+  ],
   "exclude": [
     "node_modules"
   ],
