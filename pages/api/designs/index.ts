@@ -12,8 +12,6 @@ export default async function handler(
     const queryPage = req.query.page;
     const queryCategory = req.query.category;
     const queryType = req.query.type || "";
-
-    // const design = await Design.find({ query }).limit(10);
     const result = await Design.paginate(
       { category: queryCategory, type: queryType },
       {

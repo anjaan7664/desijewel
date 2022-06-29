@@ -1,6 +1,6 @@
 import mongoose, { model, models, PaginateModel } from "mongoose";
 import paginate from "mongoose-paginate-v2";
-export interface IDesign {
+ interface IDesign extends mongoose.Document{
   id: Number;
   category: String;
   dpname: String;
@@ -51,10 +51,10 @@ export const designSchema = new mongoose.Schema({
 designSchema.plugin(paginate);
 type designDocument = IDesign & mongoose.Document;
 
-let Design;
+let Design: PaginateModel<designDocument>
 try {
   // Throws an error if 'Name' hasn't been registered
-  Design = models.Design;
+  Design = model('Design') as PaginateModel<designDocument>;
 } catch (e) {
   Design = model<designDocument, PaginateModel<designDocument>>(
     "Design",
