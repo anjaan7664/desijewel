@@ -3,10 +3,12 @@ import { useSession, signOut } from "next-auth/react";
 
 function index() {
 
+  const { data: session } = useSession();
+
   function logoutHandler() {
     signOut();
   }
-
+  console.log(session?.user);
   return (
     <div>
       {" "}

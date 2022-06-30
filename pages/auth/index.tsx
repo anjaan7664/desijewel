@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-
+import { useSession, signIn, signOut } from "next-auth/react";
 import classes from "./auth-form.module.css";
 import axios from "axios";
 
@@ -24,7 +23,16 @@ async function createUser(email: string, password: string) {
 
   return data;
 }
-
+const googleLogIn = async () => {
+  // next-auth google provide sign in with google typescript
+  const result = await signIn("google", {
+    scope: ["profile", "email"],
+    redirect: false,
+  });
+  if (result) {
+    console.log(result);
+  }
+};
 function AuthForm() {
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
@@ -96,6 +104,7 @@ function AuthForm() {
           </button>
         </div>
       </form>
+      <button onClick={googleLogIn}>Sign In With Google</button>
     </section>
   );
 }
