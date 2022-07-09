@@ -1,14 +1,14 @@
 
 import React from "react";
 import CatCard from "./CatCard";
-import CategoryTypes from "../../types/category.types";
+import CategoryTypes from "@/types/category.types";
 
 const MetalCard: React.FC<{
   myCategory: CategoryTypes[];
   catMetal: string;
 }> = (props) => {
   return (
-    <div className="neumorph container my-6 w-full text-center">
+    <div className="container w-full my-6 text-center neumorph">
       <div className="mx-auto md:my-6">
         <div className="flex flex-wrap justify-center md:flex-row md:flex-wrap">
           {props.myCategory.map((item) => {

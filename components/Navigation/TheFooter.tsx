@@ -12,7 +12,7 @@ import {
 } from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
-import PlayStore from "../../public/images/assets/play_store.png";
+import PlayStore from "@/public/images/assets/play_store.png";
 const TheFooter = () => {
   const { t } = useTranslation();
 

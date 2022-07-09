@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { SingleDesign } from "../../types/designData.types";
+import { SingleDesign } from "@/types/designData.types";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RelatedCategory from "./RelatedCategory";
 import {
@@ -23,8 +23,8 @@ const FullDesign: React.FC<{
   };
   const imageCategoryNew = () => {
     return props.metal == "gold"
-      ? props.MainImg.category
-      : props.MainImg.category.replace("silver_", "");
+      ? props.MainImg.info.category
+      : props.MainImg.info.category.replace("silver_", "");
   };
   return (
     <React.Fragment>
@@ -36,15 +36,15 @@ const FullDesign: React.FC<{
               <a className="text-black capitalize">{props.metal}</a>
             </Link>
 
-            <Link href={`/${props.metal}/${props.MainImg.category}`}>
+            <Link href={`/${props.metal}/${props.MainImg.info.category}`}>
               <a className="text-blue-600 capitalize">
-                {props.MainImg.category}
+                {props.MainImg.info.category}
               </a>
             </Link>
           </Breadcrumbs>
           <div className="my-2 border-l-4 border-[#1D9DD2] text-lg">
             <h1 className="ml-1 font-bold leading-5 capitalize font-sm md:font-2xl">
-              {props.MainImg.image}
+              {props.MainImg.url.image}
             </h1>
           </div>
         </div>
@@ -58,15 +58,15 @@ const FullDesign: React.FC<{
               <div className="my-2 flex relative h-full w-full min-w-[8] flex-col rounded-t rounded-b-none md:m-3 md:my-auto">
                 <Image
                   src={`/images/designs/images/${
-                    props.MainImg.path +
-                    props.MainImg.image +
+                    props.MainImg.url.path +
+                    props.MainImg.url.image +
                     "." +
-                    props.MainImg.img_type
+                    props.MainImg.url.img_type
                   }`}
                   layout="responsive"
                   width={100}
                   height={70}
-                  alt={props.MainImg.alt}
+                  alt={props.MainImg.alt.en}
                   priority={true}
                   className="shadow-lg2 relative rounded object-contain md:max-h-[75vh] min-h-[15rem] md:max-w-[100%]"
                 />
@@ -93,7 +93,7 @@ const FullDesign: React.FC<{
               <li className="flex border-b border-gray-200">
                 <span className="font-bold">Weight -</span>
                 <div className="ml-auto">
-                  <span className="text-right">{props.MainImg.weight} gm </span>
+                  <span className="text-right">{props.MainImg.extra.weight} gm </span>
                 </div>
               </li>
               <li className="flex w-full border-b border-gray-200">
@@ -127,11 +127,11 @@ const FullDesign: React.FC<{
                   // "
                   href={{
                     pathname: `/${props.metal}/${imageCategoryNew()}`,
-                    query: { subCat: props.MainImg.sub_category },
+                    query: { subCat: props.MainImg.info.sub_category },
                   }}
                 >
                   <a className="ml-auto text-xl font-normal text-blue-600 underline">
-                    {props.MainImg.sub_category}
+                    {props.MainImg.info.sub_category}
                   </a>
                 </Link>
               </li>
@@ -145,7 +145,7 @@ const FullDesign: React.FC<{
                     <Typography>Product Description</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography>{props.MainImg.alt}</Typography>
+                    <Typography>{props.MainImg.alt.en}</Typography>
                   </AccordionDetails>
                 </Accordion>
               </li>
@@ -195,7 +195,7 @@ const FullDesign: React.FC<{
       {props.metal === "gold" && (
         <RelatedCategory
           metal={props.metal}
-          category={props.MainImg.category}
+          category={props.MainImg.info.category}
         />
       )}
     </React.Fragment>

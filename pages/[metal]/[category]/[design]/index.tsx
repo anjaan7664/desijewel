@@ -1,12 +1,12 @@
 
 import Head from "next/head";
 import React from "react";
-import Category from "../../../../components/helpers/Category";
-import FullDesign from "../../../../components/helpers/FullDesign";
-import { wrapper } from "../../../../store";
-import { fetchSingleDesignsData } from "../../../../store/design-slice";
-import { useAppSelector } from "../../../../store/hooks";
-import { SingleDesign } from "../../../../types/designData.types";
+import Category from "@/components/helpers/Category";
+import FullDesign from "@/components/helpers/FullDesign";
+import { fetchSingleDesignsData } from "@/store/design-slice";
+import { useAppSelector } from "@/store/hooks";
+import { SingleDesign } from "@/types/designData.types";
+import { wrapper } from "@/store/index";
 
 const Design: React.FC<{
   design: SingleDesign;
@@ -15,7 +15,8 @@ const Design: React.FC<{
   return (
     <React.Fragment>
       <Head>
-        <title>{MainImg.alt} </title>
+       
+        <title>{  MainImg.alt.en} </title>
         <meta name="description" content=" " />
         <meta name="keywords" content=" " />
       </Head>

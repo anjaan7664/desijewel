@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { SingleDesign } from "../../types/designData.types";
+import { SingleDesign } from "@/types/designData.types";
 import Edit from "../admin/Edit";
 
 const imgStyle = {
@@ -26,15 +26,15 @@ const DesignCard: React.FC<{
       >
         <motion.div className="relative w-full" whileHover={{ scale: 1.2 }}>
           <Link
-            href={`/${props.catMetal}/${props.designData.category}/${props.designData.image}`}
+            href={`/${props.catMetal}/${props.designData.info.category}/${props.designData.url.image}`}
           >
             <a className="relative h-auto image-wrap">
               <Image
                 src={`/images/designs/images/${
-                  props.designData.path +
-                  props.designData.image +
+                  props.designData.url.path +
+                  props.designData.url.image +
                   "." +
-                  props.designData.img_type
+                  props.designData.url.img_type
                 }`}
                 alt="designAlt"
                 layout="responsive"
@@ -50,16 +50,16 @@ const DesignCard: React.FC<{
         <ul className="inline-block mb-4 text-xl text-left">
           <li v-show="designData.weight" className="">
             <span className="font-bold">Weight </span>
-            <span>{props.designData.id}</span>
+            <span>{props.designData._id}</span>
           </li>
         </ul>
 
         <p className="absolute top-0 text-xl">
           <Link
-            href={`/${props.catMetal}/${props.designData.category}/${props.designData.image}?${props.designData.sub_category}`}
+            href={`/${props.catMetal}/${props.designData.info.category}/${props.designData.url.image}?${props.designData.info.sub_category}`}
           >
             <a className="text-blue-400 underline capitalize">
-              <span>{props.designData.sub_category}</span>
+              <span>{props.designData.info.sub_category}</span>
             </a>
           </Link>
         </p>

@@ -1,4 +1,3 @@
-
 import connectMongo from "@/utils/connectMongo";
 import Design from "@/models/design.model";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -8,19 +7,19 @@ export default async function handler(
 ) {
   try {
     await connectMongo();
-    const queryPerPage = req.query.perPage;
-    const queryPage = req.query.page;
+    const queryPerPage = parseInt(req.query.perPage as string);
+    const queryPage = parseInt(req.query.page as string);
     const queryCategory = req.query.category;
-    const queryType = req.query.type || "";
+    const queryType = req.query.sort || "";
     const result = await Design.paginate(
-      { category: queryCategory, type: queryType },
+      { "info.category": queryCategory},
       {
-        page: 1,
-        limit: 12,
+        page: queryPage,
+        limit: queryPerPage,
         sort: { hit: -1 },
       }
     );
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {
     console.log(error);
     res.json({ error });

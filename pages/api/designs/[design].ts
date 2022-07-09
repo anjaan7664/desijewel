@@ -10,8 +10,8 @@ export default async function handler(
   try {
     await connectMongo();
     const queryImage = req.query.design;
-    const design = await Design.findOne({ image: queryImage });
-    console.log("image rendered");
+    const design = await Design.findOne({ "url.image": queryImage });
+    console.log(design);
     res.json(design);
     res.end();
   } catch (error) {

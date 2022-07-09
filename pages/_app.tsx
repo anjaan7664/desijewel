@@ -4,7 +4,7 @@ import "../services/i18n.tsx";
 import Layout from "../layout/Layout";
 import { SessionProvider } from "next-auth/react"
 
-import { wrapper } from "../store";
+import { wrapper } from "@/store/index";
 function MyApp({ Component,  pageProps:{session, ...pageProps} }: AppProps) {
   return (
     <SessionProvider session={session}>

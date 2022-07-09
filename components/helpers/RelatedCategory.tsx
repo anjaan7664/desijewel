@@ -1,6 +1,6 @@
 import React from "react";
 import { default as categoryData } from "@/assets/json/categoryList.json";
-import CategoryTypes from "../../types/category.types";
+import CategoryTypes from "@/types/category.types";
 const RelatedCategory: React.FC<{ metal: string; category: string }> = (
   props
 ) => {

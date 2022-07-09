@@ -30,7 +30,10 @@
       ],
       "@/models/*": [
         "models/*"
-      ]
+      ],
+      "@/public/*": [
+        "public/*"
+      ],
     },
     "lib": [
       "dom",

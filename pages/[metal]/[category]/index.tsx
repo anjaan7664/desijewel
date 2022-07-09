@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { useAppSelector } from "../../../store/hooks";
-import { fetchDesignsData } from "../../../store/design-slice";
-import DesignCard from "../../../components/cards/DesignCard";
-import Category from "../../../components/helpers/Category";
+import { useAppSelector } from "@/store/hooks";
+import { fetchDesignsData } from "@/store/design-slice";
+import DesignCard from "@/components/cards/DesignCard";
+import Category from "@/components/helpers/Category";
 import { Pagination, Stack } from "@mui/material";
 import Image from "next/image";
 import { NextPage } from "next";
-import { wrapper } from "../../../store";
+import { wrapper } from "@/store/index";
 import Head from "next/head";
 const perPage = 11;
 const imgStyle = {
@@ -23,8 +23,13 @@ const CategoryPage: NextPage = () => {
 
   const showDesigns = useAppSelector((state) => state.design.designs);
   const onPageChange = (event: React.ChangeEvent<unknown>, pageNum: number) => {
-    router.push(`/gold/${router.query.category}?page=${pageNum}`);
+    router.push(`/${router.query.metal}/${router.query.category}?page=${pageNum}`);
     setPageNum(pageNum);
+  };
+  const sorting = (sort: string) => {
+    console.log(sort);
+
+    router.push(`/${router.query.metal}/${router.query.category}?sort=${sort}`);
   };
   return (
     <React.Fragment>
@@ -40,13 +45,13 @@ const CategoryPage: NextPage = () => {
           <span className="font-bold capitalize">{router.query.category}</span>
         </h1>
       </div>
-      <SortBy />
+      <SortBy sorting={sorting} />
       <div className="flex flex-wrap justify-between pt-4 overflow-hidden text-center rounded">
         <Shoppers />
         {designData.docs &&
           designData.docs.map((design) => {
             return (
-              <DesignCard key={design.id} designData={design} catMetal="gold" />
+              <DesignCard key={design._id} designData={design} catMetal="gold" />
             );
           })}
       </div>
@@ -73,10 +78,12 @@ const CategoryPage: NextPage = () => {
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ query }) => {
+      const queryPage = parseInt(query.page as string) || 1;
       const designConfig = {
         category: query.category,
-        page: query.page || 1,
-        perPage: 11,
+        page: queryPage  || 1,
+        perPage,
+        sort:query.sort || "",
       };
       await store.dispatch(fetchDesignsData(designConfig));
       return {
@@ -86,54 +93,58 @@ export const getServerSideProps = wrapper.getServerSideProps(
 );
 export default CategoryPage;
 
-export const SortBy = () => {
-  const sorting = (sort: string) => {
-    console.log(sort);
-
-    // router.push(`/gold/${router.query.category}?sort=${sort}`);
+export const SortBy = ({ sorting }:any) => {
+  const sortingHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    sorting(event.currentTarget.name);
   };
+
   return (
     <div className="flex flex-row justify-center">
       <p className="hidden h-full mx-4 my-auto text-2xl font-bold md:block">
         Sort By:
       </p>
       <ul className="flex flex-row self-center">
-        <li
+        <button
           className="px-6 py-2 mx-1 text-white bg-green-500 rounded-md cursor-pointer"
-          // onClick={sorting('')}
+          onClick={sortingHandler}
+          name=""
         >
           All
-        </li>
-        <li
+        </button>
+        <button
           className={`mx-1 rounded-md px-4 py-2 text-white md:px-6 + ${
             1 == 1
               ? "bg-purple-500 cursor-pointer"
               : "bg-gray-500 cursor-not-allowed"
           }`}
-          // onClick={sorting('desi')}
+          onClick={sortingHandler}
+          name="desi"
         >
           Desi
-        </li>
-        <li
+        </button>
+        <button
           className={`mx-1 rounded-md px-4 py-2 text-white md:px-6 + ${
             1 == 1
               ? "bg-yellow-500 cursor-pointer"
               : "bg-gray-500 cursor-not-allowed"
           }`}
-          // onClick={sorting('fancy')}
+          onClick={sortingHandler}
+          name="fancy"
         >
           Fancy
-        </li>
-        <li
+        </button>
+        <button
           className={`mx-1 rounded-md px-4 py-2 text-white md:px-6 + ${
             1 == 1
               ? "bg-blue-500 cursor-pointer"
               : "bg-gray-500 cursor-not-allowed"
           }`}
-          // onClick={sorting('kundan')}
+          onClick={sortingHandler}
+          name="kundan"
         >
           Kundan
-        </li>
+        </button>
       </ul>
     </div>
   );

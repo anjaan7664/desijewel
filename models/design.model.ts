@@ -1,51 +1,58 @@
 import mongoose, { model, models, PaginateModel } from "mongoose";
 import paginate from "mongoose-paginate-v2";
  interface IDesign extends mongoose.Document{
-  id: Number;
-  category: String;
-  dpname: String;
-  sub_category: String;
-  dp: Number;
-  comment: String;
-  path: String;
-  image: String;
-  img_type: String;
-  tag: String;
-  user: String;
-  admin: String;
-  weight: String;
-  hit: Number;
-  date: String;
-  alt: String;
-  alt_hn: String;
-  logo: Number;
-  updated_at: String;
-  title: String;
-  design_code: String;
+  _id: string;
+  url: {
+    path: string;
+    image: string;
+    img_type: string;
+  };
+  info: {
+    category: string;
+    sub_category: string;
+    dp: string;
+  };
+  extra: {
+    weight: string | number;
+    hit: number | string;
+  };
+  alt: {
+    en: string;
+    hi: string;
+  };
+  meta: {
+    title: string;
+    code: string;
+    tag: string;
+  };
+  comment: {};
 }
 
 export const designSchema = new mongoose.Schema({
-  id: Number,
-  category: String,
-  dpname: String,
-  sub_category: String,
-  dp: Number,
-  comment: String,
-  path: String,
-  image: String,
-  img_type: String,
-  tag: String,
-  user: String,
-  admin: String,
-  weight: String,
-  hit: Number,
-  date: String,
-  alt: String,
-  alt_hn: String,
-  logo: Number,
-  updated_at: String,
-  title: String,
-  design_code: String,
+  url: {
+    path: String,
+    image: String,
+    img_type: String,
+  },
+  info: {
+    category: String,
+    sub_category: String,
+    dp: String,
+  },
+  extra: {
+    weight:  Number || String,
+    hit :Number || String,
+  },
+  alt: {
+    en: String,
+    hi: String,
+  },
+  meta: {
+    title: String,
+    code: String,
+    tag: String,
+  },
+  comment: {}
 });
 
 designSchema.plugin(paginate);

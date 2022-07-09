@@ -6,6 +6,7 @@ import { verifyPassword } from "@/utils/auth";
 import User from "@/models/user.model";
 
 export default NextAuth({
+  secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: "jwt" },
   providers: [
     CredentialsProvider({
@@ -55,4 +56,9 @@ export default NextAuth({
       },
     }),
   ],
+  callbacks: {
+    session({ session, token, user }) {
+      return session; // The return type will match the one returned in `useSession()`
+    },
+  },
 });

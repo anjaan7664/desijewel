@@ -9,7 +9,7 @@ const initialState = {
   design: {} as SingleDesign,
   error: null,
 };
-const designSlice = createSlice({
+export const designSlice = createSlice({
   name: "design",
   initialState,
   reducers: {
@@ -36,8 +36,9 @@ export const { setDesigns, getSingleDesign } = designSlice.actions;
 export const fetchDesignsData =
   (designConfig: {
     category: string | string[] | undefined;
-    page: string | number | string[];
+    page: number;
     perPage: number;
+    sort: string | string[];
   }): AppThunk =>
   async (dispatch) => {
     const response = await axios.post(

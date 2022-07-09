@@ -1,16 +1,19 @@
 import React from "react";
+import { useRouter } from "next/router";
 import MetalCard from "@/components/cards/MetalCard";
 import Category from "@/components/helpers/Category";
 import { default as CategoryList } from "@/assets/json/categoryList.json";
 import Head from "next/head";
-const index = () => {
-  const catMetal = "gold";
+const MetalPage = () => {
+  const router = useRouter();
+  const catMetal = router.query.metal as string;
   const myCategory = CategoryList.categories.filter((cat) => {
     return cat.metal === catMetal;
   });
   return (
     <React.Fragment>
       <Head>
+        
         <title>Catalogue of New and Latest Gold Jewellery</title>
         <meta
           name="description"
@@ -27,4 +30,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default MetalPage;

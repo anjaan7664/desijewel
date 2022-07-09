@@ -19,6 +19,7 @@ namespace NodeJS {
       TWITTER_SECRET: string
       DATABASE_URL: string
       SECRET: string
+      PER_PAGE: number
     }
   }
   

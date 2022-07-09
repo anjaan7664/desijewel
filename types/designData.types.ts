@@ -12,25 +12,28 @@ export interface Designs {
 }
 export type SingleDesign = {
   _id: string;
-  id: number;
-  category: string;
-  dpname: string;
-  sub_category: string;
-  dp: number;
-  comment: string;
-  path: string;
-  image: string;
-  img_type: string;
-  tag: string;
-  user: string;
-  admin: string;
-  weight: string;
-  hit: number;
-  date: string;
-  alt: string;
-  alt_hn: string;
-  logo: number;
-  updated_at: string;
-  title: string;
-  design_code: string;
+  url: {
+    path: string;
+    image: string;
+    img_type: string;
+  };
+  info: {
+    category: string;
+    sub_category: string;
+    dp: string;
+  };
+  extra: {
+    weight: string | number;
+    hit: number | string;
+  };
+  alt: {
+    en: string;
+    hi: string;
+  };
+  meta: {
+    title: string;
+    code: string;
+    tag: string;
+  };
+  comment: {};
 };
