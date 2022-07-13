@@ -1,0 +1,12 @@
+// add field in all document
+db.designs.updateMany({},{$set:{'info.metal':'gold'}},false,true)
+
+// remove field in all document
+db.designs.updateMany({},{$unset:{'info.metal':'gold'}},false,true)
+
+// find is string has content
+db.designs.find({'info.category':{$regex:'silver'}})
+
+// find and updateMany
+db.designs.find({'info.category':'bartan'}).forEach(function (doc) {db.designs.updateOne({_id: doc._id,},{$set: {"info.category": 'utensil',},})})
+

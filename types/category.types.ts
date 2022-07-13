@@ -5,7 +5,7 @@ interface CategoryTypes {
   alt_hn: string;
   title: string;
   description: string;
-  silver_avail: string;
+  silver_avail: boolean;
   image: string;
   name: string;
   part: string;

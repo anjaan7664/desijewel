@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +5,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { SingleDesign } from "@/types/designData.types";
 import Edit from "../admin/Edit";
+import { useSession } from "next-auth/react";
 
 const imgStyle = {
   boxShadow:
@@ -17,7 +17,7 @@ const DesignCard: React.FC<{
   catMetal: string;
 }> = (props) => {
   const { t } = useTranslation();
-
+  const { data: session } = useSession();
   return (
     <div className="relative w-full p-2 designComponent md:w-1/3 md:p-6">
       <div
@@ -48,10 +48,12 @@ const DesignCard: React.FC<{
       </div>
       <div className="relative py-2 mt-auto text-2xl font-semibold text-black md:text-xl lg:text-2xl">
         <ul className="inline-block mb-4 text-xl text-left">
-          <li v-show="designData.weight" className="">
-            <span className="font-bold">Weight </span>
-            <span>{props.designData._id}</span>
-          </li>
+          {props.designData.extra.weight != "0" && (
+            <li className="">
+              <span className="font-bold">Weight </span>
+              <span>{props.designData.extra.weight}</span>
+            </li>
+          )}
         </ul>
 
         <p className="absolute top-0 text-xl">
@@ -64,7 +66,7 @@ const DesignCard: React.FC<{
           </Link>
         </p>
       </div>
-      {1 == 1 && <Edit />}
+      {session && <Edit hit={props.designData.extra.hit as string} />}
     </div>
   );
 };

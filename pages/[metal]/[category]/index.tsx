@@ -9,6 +9,7 @@ import Image from "next/image";
 import { NextPage } from "next";
 import { wrapper } from "@/store/index";
 import Head from "next/head";
+import RelatedCategory from "@/components/helpers/RelatedCategory";
 const perPage = 11;
 const imgStyle = {
   boxShadow:
@@ -16,21 +17,21 @@ const imgStyle = {
 };
 const CategoryPage: NextPage = () => {
   const router = useRouter();
+  const metal = router.query.metal as string;
   const [pageNum, setPageNum] = useState<number>(
     router.query.page ? parseInt(router.query.page as string) : 1
   );
   const designData = useAppSelector((state) => state.design.designs);
-
+  const category = router.query.category as string;
   const showDesigns = useAppSelector((state) => state.design.designs);
   const onPageChange = (event: React.ChangeEvent<unknown>, pageNum: number) => {
-    router.push(`/${router.query.metal}/${router.query.category}?page=${pageNum}`);
+    router.push(`/${metal}/${router.query.category}?page=${pageNum}`);
     setPageNum(pageNum);
   };
   const sorting = (sort: string) => {
-    console.log(sort);
-
-    router.push(`/${router.query.metal}/${router.query.category}?sort=${sort}`);
+    router.push(`/${metal}/${router.query.category}?sort=${sort}`);
   };
+
   return (
     <React.Fragment>
       <Head>
@@ -38,20 +39,24 @@ const CategoryPage: NextPage = () => {
         <meta name="description" content=" " />
         <meta name="keywords" content=" " />
       </Head>
-      <Category catMetal="gold" />
+      <Category catMetal={metal as string} />
       <div className="w-full text-center">
         <h1 className="my-2 text-2xl md:my-6">
           Showing Image of &nbsp;
           <span className="font-bold capitalize">{router.query.category}</span>
         </h1>
       </div>
-      <SortBy sorting={sorting} />
+      {metal === "gold" && <SortBy sorting={sorting} />}
       <div className="flex flex-wrap justify-between pt-4 overflow-hidden text-center rounded">
         <Shoppers />
         {designData.docs &&
           designData.docs.map((design) => {
             return (
-              <DesignCard key={design._id} designData={design} catMetal="gold" />
+              <DesignCard
+                key={design._id}
+                designData={design}
+                catMetal={metal}
+              />
             );
           })}
       </div>
@@ -71,6 +76,9 @@ const CategoryPage: NextPage = () => {
           </Stack>
         )}
       </div>
+      {metal === "gold" && (
+        <RelatedCategory metal={metal} category={category} />
+      )}
     </React.Fragment>
   );
 };
@@ -81,9 +89,10 @@ export const getServerSideProps = wrapper.getServerSideProps(
       const queryPage = parseInt(query.page as string) || 1;
       const designConfig = {
         category: query.category,
-        page: queryPage  || 1,
+        page: queryPage || 1,
         perPage,
-        sort:query.sort || "",
+        sort: query.sort || "",
+        metal: query.metal as string,
       };
       await store.dispatch(fetchDesignsData(designConfig));
       return {
@@ -93,7 +102,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 );
 export default CategoryPage;
 
-export const SortBy = ({ sorting }:any) => {
+export const SortBy = ({ sorting }: any) => {
   const sortingHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     sorting(event.currentTarget.name);
@@ -154,11 +163,7 @@ export const Shoppers = () => {
     <div className="relative w-full h-full p-2 designComponent md:w-1/3 md:p-6">
       <div style={imgStyle} className="relative">
         <Image
-          src={
-            1 == 1
-              ? "/images/shoppers/shoppers_silver.webp"
-              : "/images/shoppers/shoppers1.webp"
-          }
+          src="/images/shoppers/shoppers1.webp"
           alt="Designing Jewel Contact Card"
           width={100}
           height={70}

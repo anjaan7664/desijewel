@@ -1,32 +1,7 @@
-import mongoose, { model, models, PaginateModel } from "mongoose";
+import mongoose, { model, PaginateModel } from "mongoose";
+import { SingleDesign } from "@/types/designData.types";
 import paginate from "mongoose-paginate-v2";
- interface IDesign extends mongoose.Document{
-  _id: string;
-  url: {
-    path: string;
-    image: string;
-    img_type: string;
-  };
-  info: {
-    category: string;
-    sub_category: string;
-    dp: string;
-  };
-  extra: {
-    weight: string | number;
-    hit: number | string;
-  };
-  alt: {
-    en: string;
-    hi: string;
-  };
-  meta: {
-    title: string;
-    code: string;
-    tag: string;
-  };
-  comment: {};
-}
+
 
 export const designSchema = new mongoose.Schema({
   url: {
@@ -38,6 +13,7 @@ export const designSchema = new mongoose.Schema({
     category: String,
     sub_category: String,
     dp: String,
+    metal: String,
   },
   extra: {
     weight:  Number || String,
@@ -56,7 +32,7 @@ export const designSchema = new mongoose.Schema({
 });
 
 designSchema.plugin(paginate);
-type designDocument = IDesign & mongoose.Document;
+type designDocument = SingleDesign & mongoose.Document;
 
 let Design: PaginateModel<designDocument>
 try {

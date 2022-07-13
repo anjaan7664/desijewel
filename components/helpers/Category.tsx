@@ -32,8 +32,8 @@ const Category: React.FC<{
     }
   };
 
-  const showByBodyPart = (part: string) => {
-    return myCategory.categories.filter((i) => i.part === part);
+  const showByBodyPart = (part: string, metal:string) => {
+    return myCategory.categories.filter((i) => i.part === part && i.metal === metal);
   };
   return (
     <React.Fragment>
@@ -74,7 +74,7 @@ const Category: React.FC<{
                       </span>
                     </button>
                     <ul className="absolute w-full transition duration-150 ease-in-out origin-top transform scale-0 bg-white border rounded-sm shadow-card group-hover:scale-100">
-                      {showByBodyPart(item.part).map((design) => {
+                      {showByBodyPart(item.part, props.catMetal).map((design) => {
                         return (
                           <li
                             key={design.path}
@@ -139,7 +139,7 @@ const Category: React.FC<{
                   <ul
                     className="w-full bg-white rounded-sm"
                   >
-                    {showByBodyPart(index.part).map((design, index) => {
+                    {showByBodyPart(index.part, props.catMetal).map((design, index) => {
                       return (
                         <li
                           key={index}

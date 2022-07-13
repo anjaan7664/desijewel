@@ -21,6 +21,7 @@ export type SingleDesign = {
     category: string;
     sub_category: string;
     dp: string;
+    metal: string;
   };
   extra: {
     weight: string | number;

@@ -1,7 +1,8 @@
 import React from "react";
 import { default as categoryData } from "@/assets/json/categoryList.json";
 import CategoryTypes from "@/types/category.types";
-const RelatedCategory: React.FC<{ metal: string; category: string }> = (
+import MetalCard from "../cards/MetalCard";
+const RelatedCategory: React.FC<{ metal: string; category: string  }> = (
   props
 ) => {
   const imageCategoryNew = () => {
@@ -10,12 +11,14 @@ const RelatedCategory: React.FC<{ metal: string; category: string }> = (
       : props.category.replace("silver_", "");
   };
   const myCategory = () => {
-    const result = categoryData.categories.find((i) => {
-      i.url === props.category && i.metal === props.metal;
-    });
-    const newRelatedArray = categoryData.filter(
-      // TODO change this to use the category type
-      (i) => i.part === "neck" && i.metal === "gold" && i.url !== "aad"
+    const result = categoryData.categories.find(
+      (i) => i.url === props.category && i.metal === props.metal
+    );
+    const newRelatedArray = categoryData.categories.filter(
+      (i) =>
+        i.part === result?.part &&
+        i.metal === props.metal &&
+        i.url !== props.category
     );
     return shuffle(newRelatedArray);
   };
@@ -25,7 +28,7 @@ const RelatedCategory: React.FC<{ metal: string; category: string }> = (
       <h2 className="my-4 text-3xl font-semibold text-center text-green-600">
         Explore Similar Jewellery
       </h2>
-      {/* <MetalCard myCategory={myCategory()} catMetal={props.metal} /> */}
+      <MetalCard myCategory={myCategory()} catMetal={props.metal} />
     </div>
   );
 };

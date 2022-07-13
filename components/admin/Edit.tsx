@@ -12,7 +12,7 @@ const buttons = [
   { name: "Cancel", color: "bg-red" },
 ];
 
-const Edit = () => {
+const Edit:React.FC<{hit:string}> = ({hit}) => {
   const [setting, changeSetting] = useState({
     show: true,
     weight: false,
@@ -55,6 +55,7 @@ const Edit = () => {
 
   return (
     <div className="relative w-full">
+      <p>Hit {hit}</p>
       {setting.show ? (
         <button
           className="mr-auto btn bg-accent"

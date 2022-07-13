@@ -39,6 +39,7 @@ export const fetchDesignsData =
     page: number;
     perPage: number;
     sort: string | string[];
+    metal: string | string[];
   }): AppThunk =>
   async (dispatch) => {
     const response = await axios.post(
@@ -68,3 +69,4 @@ export const fetchSingleDesignsData = (
 };
 
 export default designSlice.reducer;
+
