@@ -181,7 +181,7 @@ export function CustomerService() {
               {t("live_rate")}
             </a>
           </li>
-          <li className="my-2">
+          <li className="hidden my-2">
             {session ? (
               <Link href="/admin">{t("profile")}</Link>
             ) : (

@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import React from "react";
 import { useRouter } from "next/router";
@@ -6,32 +5,21 @@ import Category from "@/components/helpers/Category";
 import FullDesign from "@/components/helpers/FullDesign";
 import { fetchSingleDesignsData } from "@/store/design-slice";
 import { useAppSelector } from "@/store/hooks";
-import { SingleDesign } from "@/types/designData.types";
 import { wrapper } from "@/store/index";
 
-const Design: React.FC<{
-  design: SingleDesign;
-}> = (props) => {
+const Design = () => {
   const router = useRouter();
   const metal = router.query.metal as string;
   const MainImg = useAppSelector((state) => state.design.design);
   return (
     <React.Fragment>
       <Head>
-       
-        <title>{  MainImg.alt.en} </title>
+        <title>{MainImg.alt.en} </title>
         <meta name="description" content=" " />
         <meta name="keywords" content=" " />
       </Head>
       <Category catMetal={metal} />
-      <div>
-        {MainImg && (
-          <FullDesign
-            metal={metal}
-            MainImg={MainImg}
-          />
-        )}
-      </div>
+      <div>{MainImg && <FullDesign metal={metal} MainImg={MainImg} />}</div>
     </React.Fragment>
   );
 };

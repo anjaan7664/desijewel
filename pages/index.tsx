@@ -12,14 +12,14 @@ const Home: NextPage = () => {
   return (
     <React.Fragment>
       <Head>
-        <title>Designing Jewel</title>
+        <title>Designing Jewel- The Showcase of Indian and Rajasthani Jewellery</title>
         <meta
           name="description"
           content="Designing Jewel features high-quality wide range of affordable Designs online. Designing Jewel offers High Quality, Certified Hallmarked Premium Jewellery for you and your family."
         />
         <meta
           name="keywords"
-          content="emboss,ethnic,gold price,22ct,women,buy,jewellery,kundan,emboss,design,gold,jodhpur,pali,barmer,nagaur,bikaner "
+          content="emboss,ethnic,gold price, 22ct, women, buy, jewellery, kundan, emboss, design, gold, jodhpur, pali, barmer, nagaur, bikaner"
         />
         <meta name="author" content="Designing Jewel" />
       </Head>
@@ -40,7 +40,7 @@ export default Home;
 export const Welcome = () => {
   return (
     <section>
-      <div className="container block mx-3 text-center  md:my-auto">
+      <div className="container block mx-3 text-center md:my-auto">
         <h1
           className="text-[1.5rem] md:text-4xl lg:text-5xl 
           text-center font-bold md:my-6 md:mb-2 font-Teko tracking-wider md:tracking-widest pt-1"
@@ -62,7 +62,7 @@ export const ShowCase = () => {
             title="Designing Jewel"
             layout="fill"
             priority
-            className="object-contain h-auto max-w-full px-3 mx-auto rounded-md  md:p-4 md:px-16 shadowed"
+            className="object-contain h-auto max-w-full px-3 mx-auto rounded-md md:p-4 md:px-16 shadowed"
           />
         </div>
       </div>
@@ -111,7 +111,7 @@ export const ShowOff: React.FC<{
             return (
               <div className="flex flex-row w-full p-2" key={item.title}>
                 {/* flex-grow-0 w-3/12 md:w-1/5 image-container relative h-full   */}
-                <div className="relative flex-grow w-3/12  md:w-1/5">
+                <div className="relative flex-grow w-3/12 md:w-1/5">
                   <Image
                     src={`/images/assets/${item.image}`}
                     alt={item.alt}

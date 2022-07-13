@@ -10,6 +10,7 @@ import { NextPage } from "next";
 import { wrapper } from "@/store/index";
 import Head from "next/head";
 import RelatedCategory from "@/components/helpers/RelatedCategory";
+import { default as myCategory } from "@/assets/json/categoryList.json";
 const perPage = 11;
 const imgStyle = {
   boxShadow:
@@ -31,13 +32,15 @@ const CategoryPage: NextPage = () => {
   const sorting = (sort: string) => {
     router.push(`/${metal}/${router.query.category}?sort=${sort}`);
   };
-
+  const categoryObject = myCategory.categories.find(
+    (i) => i.url === category && i.metal === metal
+  );
   return (
     <React.Fragment>
       <Head>
-        <title> </title>
-        <meta name="description" content=" " />
-        <meta name="keywords" content=" " />
+        <title>{categoryObject?.title} </title>
+        <meta name="description" content={categoryObject?.description} />
+        <meta name="keywords" content={categoryObject?.keywords} />
       </Head>
       <Category catMetal={metal as string} />
       <div className="w-full text-center">
