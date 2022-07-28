@@ -11,6 +11,7 @@ const Design = () => {
   const router = useRouter();
   const metal = router.query.metal as string;
   const MainImg = useAppSelector((state) => state.design.design);
+ 
   return (
     <React.Fragment>
       <Head>

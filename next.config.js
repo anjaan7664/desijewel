@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
-const { withSentryConfig } = require('@sentry/nextjs');
+const { withSentryConfig } = require("@sentry/nextjs");
 
 const nextConfig = {
   i18n: {
-    locales: [ "en-US", "hi"],
+    locales: ["en-US", "hi"],
     defaultLocale: "en-US",
     localeDetection: true,
   },
@@ -33,10 +33,9 @@ const sentryWebpackPluginOptions = {
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
-module.exports = withBundleAnalyzer(nextConfig)
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+module.exports = withBundleAnalyzer(nextConfig);
 
 // module.exports =withSentryConfig(nextConfig, sentryWebpackPluginOptions);
-

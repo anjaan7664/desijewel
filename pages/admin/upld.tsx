@@ -1,6 +1,6 @@
 import React from 'react'
-
-function upld() {
+import { useSession } from "next-auth/react";
+const Upload = ()  =>{
   
   const { data: session, status } = useSession();
   const getAdminUpload = async () => {
@@ -21,7 +21,7 @@ function upld() {
     />
   
     <button
-      click="getAdminUpload"
+    
       className="block w-full px-6 py-3 mt-3 text-lg font-semibold text-white bg-green-800 rounded-lg shadow-xl hover:bg-green-600 hover:text-white"
     >
       Get Design
@@ -30,4 +30,4 @@ function upld() {
   )
 }
 
-export default upld
+export default Upload

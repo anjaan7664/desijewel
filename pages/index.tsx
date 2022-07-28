@@ -1,12 +1,13 @@
-import { ArrowForward, ArrowRight, Mail, Phone } from "@mui/icons-material";
+import { ArrowForward, Mail, Phone } from "@mui/icons-material";
 import type { NextPage } from "next";
-import Swal from "sweetalert2";
+import dynamic from 'next/dynamic'
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { default as data } from "@/assets/json/main-page.json";
-import { motion } from "framer-motion";
+import {LazyMotion, domAnimation, m } from "framer-motion";
+
 
 const Home: NextPage = () => {
   return (
@@ -80,12 +81,13 @@ export const ShowCase = () => {
         <div className="my-3 mt-4">
           <Link href="/gold">
             <a>
-              <motion.button
+  
+              <m.button
                 className="px-8 py-4 text-2xl font-semibold text-center text-white bg-pink-600 cursor-pointer animate-pulse rounded-2xl "
                 whileHover={{ scale: 1.1 }}
               >
                 See Designs
-              </motion.button>
+              </m.button>
             </a>
           </Link>
         </div>
@@ -250,7 +252,8 @@ export const Extras: React.FC = () => {
 };
 
 export const OfferUpdate: React.FC = () => {
-  const Subscribe = (e: React.MouseEvent<HTMLElement>) => {
+  const  Subscribe = async (e: React.MouseEvent<HTMLElement>) => {
+const Swal = (await import('sweetalert2')).default;
     Swal.fire({
       showConfirmButton: false,
       timer: 1500,

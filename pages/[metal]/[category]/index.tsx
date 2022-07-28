@@ -49,7 +49,7 @@ const CategoryPage: NextPage = () => {
           <span className="font-bold capitalize">{router.query.category}</span>
         </h1>
       </div>
-      {metal === "gold" && <SortBy sorting={sorting} />}
+      {/* {metal === "gold" && <SortBy sorting={sorting} />} */}
       <div className="flex flex-wrap justify-between pt-4 overflow-hidden text-center rounded">
         <Shoppers />
         {designData.docs &&

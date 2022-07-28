@@ -1,11 +1,10 @@
 import { hashPassword } from "@/utils/auth";
 import connectMongo from "@/utils/connectMongo";
-import User from "@/models/user.model"; 
-import type { NextApiRequest, NextApiResponse } from "next"
-async function handler(req:NextApiRequest, res:NextApiResponse) {
-
-    const { email, password } = req.query;
-
+import User from "@/models/user.model";
+import type { NextApiRequest, NextApiResponse } from "next";
+async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const email = req.body.email.toLowerCase();
+  const password = req.query.password as string;
 
   console.log(email);
   console.log(password);

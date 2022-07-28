@@ -17,8 +17,8 @@ export default NextAuth({
       },
       async authorize(credentials) {
         await connectMongo();
-
-        const { email, password } = credentials;
+        const email = credentials?.email.toLowerCase();
+        const password = credentials?.password as string;
         const user = await User.findOne({
           email: email,
         });

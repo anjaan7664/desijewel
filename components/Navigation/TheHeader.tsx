@@ -31,9 +31,9 @@ const Header = () => {
       className="bg-primary"
       // style={zIndex: 100, width:100%}
     >
-      <div className="font-sans antialiased container mx-auto text-white md:mx-auto relative h-full md:mb-auto flex justify-between flex-wrap items-center ">
+      <div className="container relative flex flex-wrap items-center justify-between h-full mx-auto font-sans antialiased text-white md:mx-auto md:mb-auto ">
         <Link href="/">
-          <a className="relative text-center ml-2 md:ml-0 mt-2 md:mt-auto">
+          <a className="relative mt-2 ml-2 text-center md:ml-0 md:mt-auto">
             <Image
               src="/images/assets/svg/logo_new.svg"
               alt="Desijewel"
@@ -42,17 +42,17 @@ const Header = () => {
             />
           </a>
         </Link>
-        <div className="gap-3 text-3xl md:hidden flex items-center">
+        <div className="flex items-center gap-3 text-3xl md:hidden">
           <div className="flex gap-2">
             {/* <div
               v-if="$auth.loggedIn"
-              className="h-full my-auto md:p-2 text-3xl flex gap-2"
+              className="flex h-full gap-2 my-auto text-3xl md:p-2"
             >
               <AuthAccountDropdown />
             </div> */}
 
             <button
-              className="flex items-center px-3 py-2 border-2 rounded text-white border-teal-light mr-1 sm:mr-3"
+              className="flex items-center px-3 py-2 mr-1 text-white border-2 rounded border-teal-light sm:mr-3"
               onClick={toggle}
               aria-label="menu"
             > <MenuIcon /></button>
@@ -64,7 +64,7 @@ const Header = () => {
           }`}
         >
           <div className="h-full my-auto">
-            <ul className="nav-list md:flex md:flex-row flex flex-col w-full md:w-auto md:pt-0">
+            <ul className="flex flex-col w-full nav-list md:flex md:flex-row md:w-auto md:pt-0">
               <li>
                 <Link href="/">
                   <a className="block px-6 py-3 md:py-6 font-Poppins md:hover:bg-white md:hover:text-primary" aria-label="Home">{t("home")}</a>
@@ -90,7 +90,7 @@ const Header = () => {
               </li>
 
               {auth ? (
-                <li className="mx-2 py-2 md:py-auto md:mx-4 hidden md:block">
+                <li className="hidden py-2 mx-2 md:py-auto md:mx-4 md:block">
                   <div>
                     <IconButton
                       size="large"

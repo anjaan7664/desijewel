@@ -2,7 +2,7 @@ import React from "react";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
-function index() {
+const Admin = ()  =>{
   const { data: session, status } = useSession()
 
   function logoutHandler() {
@@ -60,4 +60,4 @@ function index() {
   );
 }
 
-export default index;
+export default Admin;

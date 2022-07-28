@@ -2,8 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import Link from "next/link";
-import { Accordion, AccordionDetails, Typography } from "@mui/material";
-import AccordionSummary from "@mui/material/AccordionSummary";
+import { Accordion, AccordionDetails, Typography, AccordionSummary } from "@mui/material";
 import { default as myCategory } from "@/assets/json/categoryList.json";
 const Category: React.FC<{
   catMetal: string;
