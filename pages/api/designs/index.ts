@@ -28,6 +28,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  await runMiddleware(req, res, cors)
   try {
     await connectMongo();
     const queryPerPage = parseInt(req.query.perPage as string);
