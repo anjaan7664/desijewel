@@ -11,7 +11,7 @@
 # next.js
 /.next/
 /out/
-/public/images/designs/
+/public/images/designs
 # production
 /build
 
@@ -33,6 +33,9 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# Sentry
+.sentryclirc
 
 # Sentry
 .sentryclirc
